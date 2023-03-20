@@ -2,7 +2,9 @@ package uz.bakhromjon.app.application.application.port.in;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import uz.bakhromjon.app.application.application.port.in.response.ApplicationResponse;
 import uz.bakhromjon.app.common.SelfValidating;
 
@@ -11,12 +13,14 @@ public interface CreateApplicationUseCase {
 
 
     @Getter
+    @NoArgsConstructor
+    @EqualsAndHashCode(of = {"applicantId", "message"}, callSuper = false)
     class ApplicationCreateRequest extends SelfValidating<CreateApplicationUseCase.ApplicationCreateRequest> {
         @NotNull
-        private final Long applicantId;
+        private Long applicantId;
 
         @NotBlank
-        private final String message;
+        private String message;
 
 
         public ApplicationCreateRequest(Long applicantId, String message) {
