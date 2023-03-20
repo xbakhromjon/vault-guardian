@@ -16,7 +16,7 @@ public class CreateApplicationService implements CreateApplicationUseCase {
     @Override
     public ApplicationResponse execute(ApplicationCreateRequest createRequest) {
         Application application = applicationPresenterMapper.mapToModel(createRequest);
-        application = saveApplicationPort.execute(application);
+        application = saveApplicationPort.save(application);
         return applicationPresenterMapper.mapToResponse(application);
     }
 

@@ -40,7 +40,7 @@ class DeleteApplicationServiceTest {
     }
 
     private void givenApplicationWillSuccessfullySave(Application application) {
-        given(saveApplicationPort.execute(eq(application))).willReturn(application);
+        given(saveApplicationPort.save(eq(application))).willReturn(application);
     }
 
     private Application givenApplicationIdExists(Long id) {

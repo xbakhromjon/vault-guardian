@@ -34,7 +34,7 @@ class CreateApplicationServiceTest {
 
     private void givenCreateRequestSaveSuccess(ApplicationCreateRequest createRequest) {
         Application application = applicationPresenterMapper.mapToModel(createRequest);
-        given(saveApplicationPort.execute(any(Application.class))).willAnswer(invocationOnMock -> {
+        given(saveApplicationPort.save(any(Application.class))).willAnswer(invocationOnMock -> {
             application.setId(1L);
             return application;
         });

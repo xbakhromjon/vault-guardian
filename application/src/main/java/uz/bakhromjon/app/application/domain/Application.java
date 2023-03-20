@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(of = {"id", "applicantId", "message"})
+@EqualsAndHashCode(of = {"id", "applicantId", "message", "isDeleted"})
 public class Application {
     private Long id;
     private Long applicantId;

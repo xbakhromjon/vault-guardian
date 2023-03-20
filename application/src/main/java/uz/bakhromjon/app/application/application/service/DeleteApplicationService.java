@@ -1,8 +1,6 @@
 package uz.bakhromjon.app.application.application.service;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import uz.bakhromjon.app.application.application.port.in.DeleteApplicationUseCase;
 import uz.bakhromjon.app.application.application.port.out.LoadApplicationPort;
 import uz.bakhromjon.app.application.application.port.out.SaveApplicationPort;
@@ -20,7 +18,7 @@ public class DeleteApplicationService implements DeleteApplicationUseCase {
         Application application = loadApplicationPort.loadById(applicationId);
         application.setIsDeleted(Boolean.TRUE);
 
-        application = saveApplicationPort.execute(application);
+        application = saveApplicationPort.save(application);
         return application.getIsDeleted();
     }
 }
