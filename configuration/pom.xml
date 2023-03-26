@@ -15,54 +15,67 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot-version>3.0.2</spring-boot-version>
+        <spring-context-version>6.0.4</spring-context-version>
+        <spring-core-version>6.0.4</spring-core-version>
+        <slf4j-version>2.0.4</slf4j-version>
+        <application-version>1.0.0</application-version>
+        <presenter-version>1.0.0</presenter-version>
+        <persistence-version>1.0.0</persistence-version>
+        <common-version>1.0.0</common-version>
+        <junit-jupiter-engine-version>5.0.1</junit-jupiter-engine-version>
+        <junit-platform-launcher-version>1.4.2</junit-platform-launcher-version>
+        <mockito-version>2.23.0</mockito-version>
+        <archunit-version>0.9.3</archunit-version>
+        <h2-database-version>2.1.214</h2-database-version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.0.2</version>
+            <version>${spring-boot-version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>6.0.4</version>
+            <version>${spring-context-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>6.0.4</version>
+            <version>${spring-core-version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.4</version>
+            <version>${slf4j-version}</version>
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
             <artifactId>application</artifactId>
-            <version>1.0.0</version>
+            <version>${application-version}</version>
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
             <artifactId>presenter</artifactId>
-            <version>1.0.0</version>
+            <version>${presenter-version}</version>
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
             <artifactId>persistence</artifactId>
-            <version>1.0.0</version>
+            <version>${persistence-version}</version>
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
             <artifactId>common</artifactId>
-            <version>1.0.0</version>
+            <version>${common-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.0.2</version>
+            <version>${spring-boot-version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>junit</groupId>
@@ -73,27 +86,28 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.0.1</version>
+            <version>${junit-jupiter-engine-version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>1.4.2</version>
+            <version>${junit-platform-launcher-version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>2.23.0</version>
+            <version>${mockito-version}</version>
         </dependency>
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
             <artifactId>archunit</artifactId>
-            <version>0.9.3</version>
+            <version>${archunit-version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.199</version>
+            <version>${h2-database-version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

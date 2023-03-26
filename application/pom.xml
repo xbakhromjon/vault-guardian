@@ -15,33 +15,39 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <common-version>1.0.0</common-version>
+        <lombok-version>1.18.26</lombok-version>
+        <mapstruct-version>1.5.3.Final</mapstruct-version>
+        <spring-boot-version>3.0.2</spring-boot-version>
+        <junit-jupiter-engine-version>5.0.1</junit-jupiter-engine-version>
+        <mockito-version>2.23.0</mockito-version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
             <artifactId>common</artifactId>
-            <version>1.0.0</version>
+            <version>${common-version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <version>${lombok-version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>1.5.3.Final</version>
+            <version>${mapstruct-version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.5.3.Final</version>
+            <version>${mapstruct-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.4.3</version>
+            <version>${spring-boot-version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>junit</groupId>
@@ -52,17 +58,17 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.0.1</version>
+            <version>${junit-jupiter-engine-version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>2.23.0</version>
+            <version>${mockito-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
-            <version>3.0.2</version>
+            <version>${spring-boot-version}</version>
         </dependency>
     </dependencies>
 

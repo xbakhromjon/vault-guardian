@@ -6,7 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class DataNotFoundException extends RuntimeException {
-    private final Long statusCode = 400L;
+    private final Integer statusCode = 400;
     private Object data;
 
     public DataNotFoundException(String message, Object data) {
