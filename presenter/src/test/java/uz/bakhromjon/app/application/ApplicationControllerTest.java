@@ -10,11 +10,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import uz.bakhromjon.app.application.application.port.in.CreateApplicationUseCase;
-import uz.bakhromjon.app.application.application.port.in.DeleteApplicationUseCase;
-import uz.bakhromjon.app.application.application.port.in.GetApplicationQuery;
-import uz.bakhromjon.app.application.application.port.in.UpdateApplicationUseCase;
-import uz.bakhromjon.app.application.application.port.in.response.ApplicationResponse;
+import uz.bakhromjon.application.application.application.port.in.CreateApplicationUseCase;
+import uz.bakhromjon.application.application.application.port.in.DeleteApplicationUseCase;
+import uz.bakhromjon.application.application.application.port.in.GetApplicationQuery;
+import uz.bakhromjon.application.application.application.port.in.UpdateApplicationUseCase;
+import uz.bakhromjon.application.application.application.port.in.response.ApplicationResponse;
+import uz.bakhromjon.presenter.application.ApplicationController;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
