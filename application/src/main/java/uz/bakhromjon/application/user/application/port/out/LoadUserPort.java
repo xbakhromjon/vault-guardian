@@ -4,4 +4,6 @@ import uz.bakhromjon.application.user.domain.User;
 
 public interface LoadUserPort {
     User loadByEmail(String email);
+
+    boolean existsByEmail(String email);
 }

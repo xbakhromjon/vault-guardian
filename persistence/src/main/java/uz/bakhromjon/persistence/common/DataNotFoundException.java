@@ -2,19 +2,13 @@ package uz.bakhromjon.persistence.common;
 
 import lombok.Getter;
 import lombok.Setter;
+import uz.bakhromjon.common.ClientException;
+import uz.bakhromjon.common.ErrorData;
 
-@Setter
 @Getter
-public class DataNotFoundException extends RuntimeException {
-    private final Integer statusCode = 400;
-    private ErrorData data;
-
-    public DataNotFoundException(String message) {
-        this(message, null);
-    }
+public class DataNotFoundException extends ClientException {
 
     public DataNotFoundException(String message, ErrorData data) {
-        super(message);
-        this.data = data;
+        super(message, 404, data);
     }
 }

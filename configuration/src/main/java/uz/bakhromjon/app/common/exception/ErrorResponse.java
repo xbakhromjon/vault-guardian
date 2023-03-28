@@ -1,11 +1,16 @@
-package uz.bakhromjon.presentation.common;
+package uz.bakhromjon.app.common.exception;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
 
-@Data
-public class ErrorResponse implements Serializable {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class ErrorResponse {
     private String error;
 
     private String path;
@@ -13,6 +18,7 @@ public class ErrorResponse implements Serializable {
     private String message;
 
     private Object data;
+    private Integer code;
 
 
     public ErrorResponse(String error, String path, String message, Object data) {

@@ -13,11 +13,10 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import uz.bakhromjon.app.common.constant.ConfigurationErrorMessage;
+import uz.bakhromjon.app.common.exception.ErrorResponse;
 import uz.bakhromjon.application.token.application.port.out.LoadAccessTokenPort;
-import uz.bakhromjon.application.user.application.port.out.LoadUserPort;
 import uz.bakhromjon.application.user.domain.User;
 import uz.bakhromjon.persistence.common.DataNotFoundException;
-import uz.bakhromjon.presentation.common.ErrorResponse;
 import uz.bakhromjon.presentation.common.GenericResponse;
 import uz.bakhromjon.application.token.domain.AccessToken;
 
@@ -32,6 +31,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        // TODO: 3/3/2023 SOMEONE (P1): Clean Up here
         String accessToken = request.getHeader("Authorization");
         if (accessToken == null || !accessToken.startsWith("Bearer")) {
             sendError(new ErrorResponse("", request.getRequestURI(), ConfigurationErrorMessage.ACCESS_TOKEN_REQUIRED_THIS_RESOURCE, null), response);

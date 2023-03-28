@@ -4,13 +4,12 @@ import lombok.RequiredArgsConstructor;
 import uz.bakhromjon.application.application.application.port.out.LoadApplicationPort;
 import uz.bakhromjon.application.application.application.port.out.SaveApplicationPort;
 import uz.bakhromjon.application.application.domain.Application;
-import uz.bakhromjon.persistence.common.ErrorData;
-import uz.bakhromjon.persistence.common.ErrorDataKey;
-import uz.bakhromjon.persistence.common.ErrorMessage;
+import uz.bakhromjon.common.ErrorData;
+import uz.bakhromjon.persistence.common.PersistenceErrorDataKey;
+import uz.bakhromjon.persistence.common.PersistenceErrorMessage;
 import uz.bakhromjon.common.PersistenceAdapter;
 import uz.bakhromjon.persistence.common.DataNotFoundException;
 
-import java.util.HashMap;
 import java.util.Optional;
 
 @PersistenceAdapter
@@ -23,7 +22,7 @@ public class ApplicationPersistenceAdapter implements LoadApplicationPort, SaveA
     public Application loadById(Long applicationId) {
         Optional<ApplicationJpaEntity> applicationOptional = applicationRepository.findById(applicationId);
         applicationOptional.orElseThrow(() -> {
-            throw new DataNotFoundException(ErrorMessage.APPLICATION_NOT_FOUND, new ErrorData(ErrorDataKey.APPLICATION_ID, applicationId));
+            throw new DataNotFoundException(PersistenceErrorMessage.APPLICATION_NOT_FOUND, new ErrorData(PersistenceErrorDataKey.APPLICATION_ID, applicationId));
         });
         return APPLICATION_PERSISTENCE_MAPPER.mapToModel(applicationOptional.get());
     }

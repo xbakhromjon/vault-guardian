@@ -1,4 +1,4 @@
-package uz.bakhromjon.persistence.common;
+package uz.bakhromjon.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ErrorData {
-    private String keyMessage;
+    private String key;
     private Object value;
 }

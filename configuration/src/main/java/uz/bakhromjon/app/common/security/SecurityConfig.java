@@ -29,7 +29,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
     public static final String[] WHITE_LIST = {
-            "/auth/v1/**",
+            "/auth/**",
             "/swagger-ui/**",
             "/v3/api-docs/**"};
 
@@ -50,7 +50,7 @@ public class SecurityConfig {
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         http.authenticationProvider(authenticationProvider());
-        http.authenticationProvider(authenticationProvider());
+
         return http.build();
     }
 

@@ -17,11 +17,12 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "access_token")
 public class AccessTokenJpaEntity {
+    // TODO: 3/3/2023 BAKHROMJON (P1): refresh token qo'shish kerak
     @Id
     private String token;
 
     @Column(nullable = false)
-    private LocalDateTime expiredAt;
+    private LocalDateTime expireAt;
 
     @ManyToOne
     private UserJpaEntity user;

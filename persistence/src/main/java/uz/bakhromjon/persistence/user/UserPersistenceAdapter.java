@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import uz.bakhromjon.application.user.application.port.out.LoadUserPort;
 import uz.bakhromjon.application.user.application.port.out.SaveUserPort;
 import uz.bakhromjon.application.user.domain.User;
+import uz.bakhromjon.common.ErrorData;
 import uz.bakhromjon.common.PersistenceAdapter;
 import uz.bakhromjon.persistence.common.DataNotFoundException;
-import uz.bakhromjon.persistence.common.ErrorData;
-import uz.bakhromjon.persistence.common.ErrorDataKey;
-import uz.bakhromjon.persistence.common.ErrorMessage;
+import uz.bakhromjon.persistence.common.PersistenceErrorDataKey;
+import uz.bakhromjon.persistence.common.PersistenceErrorMessage;
 
 import java.util.Optional;
 
@@ -29,8 +29,13 @@ public class UserPersistenceAdapter implements SaveUserPort, LoadUserPort {
     public User loadByEmail(String email) {
         Optional<UserJpaEntity> optional = userRepository.findByEmail(email);
         UserJpaEntity entity = optional.orElseThrow(() -> {
-            throw new DataNotFoundException(ErrorMessage.USER_NOT_FOUND, new ErrorData(ErrorDataKey.USER_EMAIL, email));
+            throw new DataNotFoundException(PersistenceErrorMessage.USER_NOT_FOUND, new ErrorData(PersistenceErrorDataKey.USER_EMAIL, email));
         });
         return USER_PERSISTENCE_MAPPER.mapToModel(entity);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
     }
 }
