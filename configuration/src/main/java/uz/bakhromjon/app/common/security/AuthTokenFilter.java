@@ -14,6 +14,7 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import uz.bakhromjon.app.common.constant.ConfigurationErrorMessage;
 import uz.bakhromjon.application.token.application.port.out.LoadAccessTokenPort;
+import uz.bakhromjon.application.user.application.port.out.LoadUserPort;
 import uz.bakhromjon.application.user.domain.User;
 import uz.bakhromjon.persistence.common.DataNotFoundException;
 import uz.bakhromjon.presentation.common.ErrorResponse;
