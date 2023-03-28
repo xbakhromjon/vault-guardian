@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uz.bakhromjon</groupId>
-    <artifactId>hexogonal-architecture</artifactId>
+    <artifactId>vault-guardian</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
         <module>application</module>
         <module>persistence</module>
-        <module>presenter</module>
+        <module>presentation</module>
         <module>configuration</module>
         <module>common</module>
     </modules>

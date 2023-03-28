@@ -12,14 +12,12 @@ import java.time.LocalDateTime;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class AccessToken {
+    // TODO: 3/3/2023 SOMEONE (P1): Default qiymatlar qayerda bo'lishi kerak ?!
     private String token = BaseUtils.generateUniqueString(30);
     private User user;
-
     private LocalDateTime expireAt = LocalDateTime.now().plusSeconds(ApplicationConstants.ACCESS_TOKEN_EXPIRATION_IN_SECOND);
-
     private Boolean isDeleted = Boolean.FALSE;
 
     public static AccessToken create(User user) {

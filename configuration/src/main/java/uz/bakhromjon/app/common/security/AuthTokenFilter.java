@@ -16,8 +16,8 @@ import uz.bakhromjon.app.common.constant.ConfigurationErrorMessage;
 import uz.bakhromjon.application.token.application.port.out.LoadAccessTokenPort;
 import uz.bakhromjon.application.user.domain.User;
 import uz.bakhromjon.persistence.common.DataNotFoundException;
-import uz.bakhromjon.presenter.common.ErrorResponse;
-import uz.bakhromjon.presenter.common.GenericResponse;
+import uz.bakhromjon.presentation.common.ErrorResponse;
+import uz.bakhromjon.presentation.common.GenericResponse;
 import uz.bakhromjon.application.token.domain.AccessToken;
 
 import java.io.IOException;

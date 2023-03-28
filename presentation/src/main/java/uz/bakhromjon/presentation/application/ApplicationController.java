@@ -1,4 +1,4 @@
-package uz.bakhromjon.presenter.application;
+package uz.bakhromjon.presentation.application;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import uz.bakhromjon.application.application.application.port.in.CreateApplicati
 import uz.bakhromjon.application.application.application.port.in.DeleteApplicationUseCase;
 import uz.bakhromjon.application.application.application.port.in.GetApplicationQuery;
 import uz.bakhromjon.application.application.application.port.in.UpdateApplicationUseCase;
-import uz.bakhromjon.presenter.common.GenericResponse;
+import uz.bakhromjon.presentation.common.GenericResponse;
 import uz.bakhromjon.common.WebAdapter;
 
 @WebAdapter

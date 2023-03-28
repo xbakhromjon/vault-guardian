@@ -1,4 +1,4 @@
-package uz.bakhromjon.presenter.common;
+package uz.bakhromjon.presentation.common;
 
 import lombok.Getter;
 import lombok.Setter;

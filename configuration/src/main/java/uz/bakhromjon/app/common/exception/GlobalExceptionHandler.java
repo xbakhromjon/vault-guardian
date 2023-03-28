@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import uz.bakhromjon.persistence.common.DataNotFoundException;
-import uz.bakhromjon.presenter.common.ErrorResponse;
-import uz.bakhromjon.presenter.common.GenericResponse;
+import uz.bakhromjon.presentation.common.ErrorResponse;
+import uz.bakhromjon.presentation.common.GenericResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

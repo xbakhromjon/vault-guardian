@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>uz.bakhromjon</groupId>
-        <artifactId>hexogonal-architecture</artifactId>
+        <artifactId>vault-guardian</artifactId>
         <version>1.0.0</version>
     </parent>
 
@@ -59,7 +59,7 @@
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
-            <artifactId>presenter</artifactId>
+            <artifactId>presentation</artifactId>
             <version>${presenter-version}</version>
         </dependency>
         <dependency>

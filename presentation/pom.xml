@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>uz.bakhromjon</groupId>
-        <artifactId>hexogonal-architecture</artifactId>
+        <artifactId>vault-guardian</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>presenter</artifactId>
+    <artifactId>presentation</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -14,6 +14,7 @@ import uz.bakhromjon.application.application.domain.Application;
 import uz.bakhromjon.application.application.application.port.in.CreateApplicationUseCase;
 
 class CreateApplicationServiceTest {
+
     private final SaveApplicationPort saveApplicationPort =
             Mockito.mock(SaveApplicationPort.class);
     private final ApplicationPresenterMapper applicationPresenterMapper = Mappers.getMapper(ApplicationPresenterMapper.class);

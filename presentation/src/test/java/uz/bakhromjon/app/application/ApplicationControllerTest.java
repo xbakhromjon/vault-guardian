@@ -6,6 +6,7 @@ import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -15,7 +16,7 @@ import uz.bakhromjon.application.application.application.port.in.DeleteApplicati
 import uz.bakhromjon.application.application.application.port.in.GetApplicationQuery;
 import uz.bakhromjon.application.application.application.port.in.UpdateApplicationUseCase;
 import uz.bakhromjon.application.application.application.port.in.response.ApplicationResponse;
-import uz.bakhromjon.presenter.application.ApplicationController;
+import uz.bakhromjon.presentation.application.ApplicationController;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

@@ -9,6 +9,10 @@ public class DataNotFoundException extends RuntimeException {
     private final Integer statusCode = 400;
     private ErrorData data;
 
+    public DataNotFoundException(String message) {
+        this(message, null);
+    }
+
     public DataNotFoundException(String message, ErrorData data) {
         super(message);
         this.data = data;
