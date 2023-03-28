@@ -7,7 +7,7 @@ import uz.bakhromjon.application.application.domain.Application;
 
 import java.util.Objects;
 
-@Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
+@Mapper(builder = @Builder(disableBuilder = true))
 public interface ApplicationPersistenceMapper {
     ApplicationPersistenceMapper INSTANCE = Mappers.getMapper(ApplicationPersistenceMapper.class);
 

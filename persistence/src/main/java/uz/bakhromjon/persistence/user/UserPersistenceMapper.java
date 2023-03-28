@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import uz.bakhromjon.application.user.domain.User;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface UserPersistenceMapper {
     UserPersistenceMapper INSTANCE = Mappers.getMapper(UserPersistenceMapper.class);
 
