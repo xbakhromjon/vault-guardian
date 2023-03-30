@@ -6,4 +6,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ApplicationErrorMessage {
     public static final String EMAIL_ALREADY_TAKEN = "email_already_taken";
+    public static final String BAD_CREDENTIALS = "bad_credentials";
 }

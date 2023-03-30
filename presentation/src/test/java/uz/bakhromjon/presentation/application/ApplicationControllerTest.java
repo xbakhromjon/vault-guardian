@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.application;
+package uz.bakhromjon.presentation.application;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

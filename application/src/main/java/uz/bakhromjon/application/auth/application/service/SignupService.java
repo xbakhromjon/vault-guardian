@@ -2,6 +2,7 @@ package uz.bakhromjon.application.auth.application.service;
 
 import lombok.RequiredArgsConstructor;
 import uz.bakhromjon.application.auth.application.port.in.SignUpUseCase;
+import uz.bakhromjon.application.common.AES;
 import uz.bakhromjon.application.common.ApplicationErrorDataKey;
 import uz.bakhromjon.application.common.ApplicationErrorMessage;
 import uz.bakhromjon.application.token.application.port.in.CreateAccessTokenUseCase;
@@ -27,6 +28,11 @@ public class SignupService implements SignUpUseCase {
             throw new EmailAlreadyTakenException(ApplicationErrorMessage.EMAIL_ALREADY_TAKEN, new ErrorData(ApplicationErrorDataKey.EMAIL, signUpRequest.getEmail()));
         }
         User user = authMapper.mapToModel(signUpRequest);
+        try {
+            user.setMasterPassword(AES.encrypt(user.getMasterPassword(), AES.getKey()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         user = saveUserPort.save(user);
         return createAccessTokenUseCase.create(user);
     }
