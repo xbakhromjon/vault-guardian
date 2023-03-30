@@ -28,6 +28,7 @@ public class SignupService implements SignUpUseCase {
             throw new EmailAlreadyTakenException(ApplicationErrorMessage.EMAIL_ALREADY_TAKEN, new ErrorData(ApplicationErrorDataKey.EMAIL, signUpRequest.getEmail()));
         }
         User user = authMapper.mapToModel(signUpRequest);
+
         try {
             user.setMasterPassword(AES.encrypt(user.getMasterPassword(), AES.getKey()));
         } catch (Exception e) {

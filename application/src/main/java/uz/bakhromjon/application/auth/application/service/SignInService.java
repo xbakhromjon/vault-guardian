@@ -19,6 +19,7 @@ public class SignInService implements SignInUseCase {
     @Override
     public AccessTokenResponse signIn(SignInRequest signInRequest) {
         User user = loadUserPort.loadByEmail(signInRequest.getEmail());
+
         try {
             if (!AES.decrypt(user.getMasterPassword(), AES.getKey()).equals(signInRequest.getMasterPassword())) {
                 throw new BadCredentialsException(ApplicationErrorMessage.BAD_CREDENTIALS);

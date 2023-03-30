@@ -1,6 +1,7 @@
 package uz.bakhromjon.persistence.token;
 
 import lombok.RequiredArgsConstructor;
+import uz.bakhromjon.application.token.application.port.out.DeleteAccessTokenOutPort;
 import uz.bakhromjon.application.token.application.port.out.LoadAccessTokenPort;
 import uz.bakhromjon.application.token.application.port.out.SaveAccessTokenPort;
 import uz.bakhromjon.application.token.domain.AccessToken;
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
-public class AccessTokenPersistenceAdapter implements SaveAccessTokenPort, LoadAccessTokenPort {
+public class AccessTokenPersistenceAdapter implements SaveAccessTokenPort, LoadAccessTokenPort, DeleteAccessTokenOutPort {
     private final AccessTokenRepository accessTokenRepository;
     private final AccessTokenPersistenceMapper ACCESS_TOKEN_PERSISTENCE_MAPPER = AccessTokenPersistenceMapper.INSTANCE;
 
@@ -32,5 +33,10 @@ public class AccessTokenPersistenceAdapter implements SaveAccessTokenPort, LoadA
         AccessTokenJpaEntity entity = ACCESS_TOKEN_PERSISTENCE_MAPPER.mapToEntity(accessToken);
         entity = accessTokenRepository.save(entity);
         return ACCESS_TOKEN_PERSISTENCE_MAPPER.mapToModel(entity);
+    }
+
+    @Override
+    public void delete(String token) {
+        accessTokenRepository.deleteByToken(token);
     }
 }

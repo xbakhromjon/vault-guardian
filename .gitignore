@@ -126,3 +126,4 @@ fabric.properties
 /.idea/vcs.xml
 /.idea/.gitignore
 /.idea/dataSources.xml
+/myKeystore
