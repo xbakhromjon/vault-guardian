@@ -17,15 +17,17 @@ public class SignInService implements SignInUseCase {
     private final CreateAccessTokenUseCase createAccessTokenUseCase;
 
     @Override
-    public AccessTokenResponse signIn(SignInRequest signInRequest) {
+    public AccessTokenResponse signIn(SignInRequest signInRequest) throws BadCredentialsException {
         User user = loadUserPort.loadByEmail(signInRequest.getEmail());
-
+        String masterPassword;
         try {
-            if (!AES.decrypt(user.getMasterPassword(), AES.getKey()).equals(signInRequest.getMasterPassword())) {
-                throw new BadCredentialsException(ApplicationErrorMessage.BAD_CREDENTIALS);
-            }
+            masterPassword = AES.decrypt(user.getMasterPassword(), AES.getKey());
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+        if (!masterPassword.equals(signInRequest.getMasterPassword())) {
+            throw new BadCredentialsException(ApplicationErrorMessage.BAD_CREDENTIALS);
         }
         return createAccessTokenUseCase.create(user);
     }

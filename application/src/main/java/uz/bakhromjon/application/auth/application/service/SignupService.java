@@ -34,6 +34,7 @@ public class SignupService implements SignUpUseCase {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         user = saveUserPort.save(user);
         return createAccessTokenUseCase.create(user);
     }

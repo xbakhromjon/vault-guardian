@@ -39,7 +39,7 @@ public class AES {
     public static SecretKey getKey() throws Exception {
         // Load the keystore
         KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);
-        File keystoreFile = new File("myKeystore");
+        File keystoreFile = new File("configuration/src/main/resources/keystore");
         if (keystoreFile.exists()) {
             try (FileInputStream fis = new FileInputStream(keystoreFile)) {
                 keyStore.load(fis, KEYSTORE_PASSWORD.toCharArray());
