@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import uz.bakhromjon.application.common.SessionUser;
 import uz.bakhromjon.application.user.domain.User;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Collection;
  **/
 @Getter
 @AllArgsConstructor
-public class UserDetailsImpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails, SessionUser {
     private Long id;
     private String email;
     private String masterPassword;
@@ -59,4 +60,6 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

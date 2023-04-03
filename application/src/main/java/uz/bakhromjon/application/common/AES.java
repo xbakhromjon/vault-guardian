@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.util.Base64;
+import java.util.Objects;
 
 public class AES {
     private static final String ALGORITHM = "AES";
@@ -73,6 +74,7 @@ public class AES {
     }
 
     public static String encrypt(String plaintext, SecretKey key) throws Exception {
+        if (Objects.isNull(plaintext)) return null;
         Cipher cipher = Cipher.getInstance(TRANSFORMATION);
         cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] ciphertextBytes = cipher.doFinal(plaintext.getBytes());
@@ -80,6 +82,7 @@ public class AES {
     }
 
     public static String decrypt(String ciphertext, SecretKey key) throws Exception {
+        if (Objects.isNull(ciphertext)) return null;
         Cipher cipher = Cipher.getInstance(TRANSFORMATION);
         cipher.init(Cipher.DECRYPT_MODE, key);
         byte[] ciphertextBytes = Base64.getDecoder().decode(ciphertext);

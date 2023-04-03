@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.bakhromjon.application.auth.application.port.in.SignInUseCase;
 import uz.bakhromjon.application.auth.application.port.in.SignOutUseCase;
 import uz.bakhromjon.application.auth.application.port.in.SignUpUseCase;
+import uz.bakhromjon.application.auth.application.service.BadCredentialsException;
 import uz.bakhromjon.application.auth.application.service.EmailAlreadyTakenException;
 import uz.bakhromjon.application.token.application.port.in.response.AccessTokenResponse;
 import uz.bakhromjon.common.WebAdapter;
@@ -30,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/signIn")
-    public GenericResponse<AccessTokenResponse> signIn(@RequestBody @Valid SignInUseCase.SignInRequest signInRequest) {
+    public GenericResponse<AccessTokenResponse> signIn(@RequestBody @Valid SignInUseCase.SignInRequest signInRequest) throws BadCredentialsException {
         return GenericResponse.ok(signInUseCase.signIn(signInRequest));
     }
 
@@ -38,6 +39,4 @@ public class AuthController {
     public GenericResponse<Void> signup(@RequestParam @NotBlank String token) {
         return GenericResponse.ok(signOutUseCase.signOut(token));
     }
-
-
 }

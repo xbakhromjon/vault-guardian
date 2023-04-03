@@ -30,7 +30,7 @@ public class OpenAPIConfig implements WebMvcConfigurer {
         return GroupedOpenApi
                 .builder()
                 .group("Admin")
-                .pathsToMatch(PathNames.ADMIN + "/**", "/setting-value/**")
+                .pathsToMatch(PathNames.ADMIN + "/**")
                 .build();
     }
 
@@ -40,7 +40,7 @@ public class OpenAPIConfig implements WebMvcConfigurer {
         return GroupedOpenApi
                 .builder()
                 .group("User")
-                .pathsToMatch(PathNames.USER + "/**")
+                .pathsToMatch("/**")
                 .build();
     }
 
@@ -54,18 +54,18 @@ public class OpenAPIConfig implements WebMvcConfigurer {
     }
 
 
-    @Bean
-    public OpenAPI customizeOpenAPI() {
-        final String securitySchemeName = "bearerAuth";
-        return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement()
-                        .addList(securitySchemeName))
-                .components(new Components()
-                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
-                                .name(securitySchemeName)
-                                .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("JWT")));
-    }
+//    @Bean
+//    public OpenAPI customizeOpenAPI() {
+//        final String securitySchemeName = "bearerAuth";
+//        return new OpenAPI()
+//                .addSecurityItem(new SecurityRequirement()
+//                        .addList(securitySchemeName))
+//                .components(new Components()
+//                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
+//                                .name(securitySchemeName)
+//                                .type(SecurityScheme.Type.HTTP)
+//                                .scheme("bearer")
+//                                .bearerFormat("JWT")));
+//    }
 }
 

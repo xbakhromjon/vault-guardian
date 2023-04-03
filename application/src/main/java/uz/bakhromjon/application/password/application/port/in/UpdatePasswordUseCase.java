@@ -1,11 +1,11 @@
 package uz.bakhromjon.application.password.application.port.in;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Normalized;
 import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
 
 public interface UpdatePasswordUseCase {
@@ -16,6 +16,8 @@ public interface UpdatePasswordUseCase {
     @AllArgsConstructor
     @EqualsAndHashCode(callSuper = false)
     class PasswordUpdateRequest {
+        @NotNull
+        private Long id;
         private String name;
         private String username;
         @NotBlank

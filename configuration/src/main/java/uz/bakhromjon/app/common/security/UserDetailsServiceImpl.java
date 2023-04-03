@@ -3,12 +3,19 @@ package uz.bakhromjon.app.common.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import uz.bakhromjon.application.common.SessionUser;
+import uz.bakhromjon.application.common.SessionUserService;
 import uz.bakhromjon.application.user.application.port.out.LoadUserPort;
 import uz.bakhromjon.application.user.application.port.out.SaveUserPort;
 import uz.bakhromjon.application.user.domain.User;
+
+import java.util.Objects;
 
 /**
  * @author : Bakhromjon Khasanboyev
@@ -16,7 +23,7 @@ import uz.bakhromjon.application.user.domain.User;
  **/
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService, SessionUserService {
 
     private final LoadUserPort loadUserPort;
 
@@ -30,6 +37,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         return UserDetailsImpl.build(user);
+    }
+
+    @Override
+    public SessionUser getSession() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (authentication != null && !(authentication.getPrincipal() instanceof String)) ? (SessionUser) authentication.getPrincipal() : null;
+    }
+
+    @Override
+    public long getSessionId() {
+        SessionUser session = getSession();
+        return Objects.isNull(session) ? 3 : session.getId();
     }
 }
 

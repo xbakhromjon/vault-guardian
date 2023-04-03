@@ -3,6 +3,7 @@ package uz.bakhromjon.application.password.application.service;
 import org.mapstruct.Mapper;
 import uz.bakhromjon.application.common.AES;
 import uz.bakhromjon.application.password.application.port.in.CreatePasswordUseCase;
+import uz.bakhromjon.application.password.application.port.in.UpdatePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
 import uz.bakhromjon.application.password.domain.Password;
 
@@ -15,6 +16,23 @@ public abstract class PasswordPresenterMapper {
             String encryptedPassword = AES.encrypt(createRequest.getPassword(), AES.getKey());
             String encryptedNotes = AES.encrypt(createRequest.getNotes(), AES.getKey());
             return new Password(encryptedName, encryptedUsername, encryptedPassword, encryptedNotes);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Password mapToModel(UpdatePasswordUseCase.PasswordUpdateRequest updateRequest, Password password) {
+        try {
+            String encryptedName = AES.encrypt(updateRequest.getName(), AES.getKey());
+            String encryptedUsername = AES.encrypt(updateRequest.getUsername(), AES.getKey());
+            String encryptedPassword = AES.encrypt(updateRequest.getPassword(), AES.getKey());
+            String encryptedNotes = AES.encrypt(updateRequest.getNotes(), AES.getKey());
+
+            password.setName(encryptedName);
+            password.setUsername(encryptedUsername);
+            password.setPassword(encryptedPassword);
+            password.setNotes(encryptedNotes);
+            return password;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
