@@ -4,10 +4,10 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-import uz.bakhromjon.application.application.application.port.in.response.ApplicationResponse;
-import uz.bakhromjon.application.application.domain.Application;
 import uz.bakhromjon.application.application.application.port.in.CreateApplicationUseCase;
 import uz.bakhromjon.application.application.application.port.in.UpdateApplicationUseCase;
+import uz.bakhromjon.application.application.application.port.in.response.ApplicationResponse;
+import uz.bakhromjon.application.application.domain.Application;
 
 import java.util.Objects;
 

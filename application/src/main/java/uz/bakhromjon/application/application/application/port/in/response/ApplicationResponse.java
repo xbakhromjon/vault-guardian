@@ -6,8 +6,6 @@ package uz.bakhromjon.application.application.application.port.in.response;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 
 @Setter
 @Getter

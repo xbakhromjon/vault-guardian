@@ -30,7 +30,7 @@ public class SignupService implements SignUpUseCase {
         User user = authMapper.mapToModel(signUpRequest);
 
         try {
-            user.setMasterPassword(AES.encrypt(user.getMasterPassword(), AES.getKey()));
+            user.setMasterPassword(AES.encrypt(signUpRequest.getMasterPassword(), AES.getKey()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

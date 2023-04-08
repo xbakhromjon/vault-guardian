@@ -39,5 +39,4 @@ public class PasswordController {
     public GenericResponse<PasswordResponse> update(@RequestBody UpdatePasswordUseCase.PasswordUpdateRequest updateRequest) {
         return GenericResponse.ok(updatePasswordUseCase.update(updateRequest));
     }
-
 }

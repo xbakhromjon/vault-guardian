@@ -3,8 +3,6 @@ package uz.bakhromjon.application.common;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import javax.management.loading.MLetContent;
-
 @Getter
 @RequiredArgsConstructor
 public enum Error {

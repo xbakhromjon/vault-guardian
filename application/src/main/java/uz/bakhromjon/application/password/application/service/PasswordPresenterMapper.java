@@ -2,6 +2,9 @@ package uz.bakhromjon.application.password.application.service;
 
 import org.mapstruct.Mapper;
 import uz.bakhromjon.application.common.AES;
+import uz.bakhromjon.application.common.ApplicationErrorMessage;
+import uz.bakhromjon.application.common.DecryptionException;
+import uz.bakhromjon.application.common.EncryptionException;
 import uz.bakhromjon.application.password.application.port.in.CreatePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.UpdatePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
@@ -17,7 +20,7 @@ public abstract class PasswordPresenterMapper {
             String encryptedNotes = AES.encrypt(createRequest.getNotes(), AES.getKey());
             return new Password(encryptedName, encryptedUsername, encryptedPassword, encryptedNotes);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new EncryptionException(ApplicationErrorMessage.UNKNOWN_ENCRYPTION_ERROR);
         }
     }
 
@@ -34,7 +37,7 @@ public abstract class PasswordPresenterMapper {
             password.setNotes(encryptedNotes);
             return password;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new EncryptionException(ApplicationErrorMessage.UNKNOWN_ENCRYPTION_ERROR);
         }
     }
 
@@ -47,7 +50,7 @@ public abstract class PasswordPresenterMapper {
             String decryptedNotes = AES.decrypt(password.getNotes(), AES.getKey());
             return new PasswordResponse(password.getId(), password.getCreatedAt(), password.getUpdatedAt(), decryptedName, decryptedUsername, decryptedPassword, decryptedNotes);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new DecryptionException(ApplicationErrorMessage.UNKNOWN_DECRYPTION_ERROR);
         }
     }
 }
