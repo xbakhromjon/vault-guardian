@@ -10,48 +10,61 @@ import uz.bakhromjon.application.password.application.port.in.UpdatePasswordUseC
 import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
 import uz.bakhromjon.application.password.domain.Password;
 
+import javax.crypto.SecretKey;
+import java.util.List;
+import java.util.Objects;
+
 @Mapper(componentModel = "spring")
 public abstract class PasswordPresenterMapper {
-    public Password mapToModel(CreatePasswordUseCase.PasswordCreateRequest createRequest) {
+    public Password mapToModel(CreatePasswordUseCase.PasswordCreateRequest source) {
         try {
-            String encryptedName = AES.encrypt(createRequest.getName(), AES.getKey());
-            String encryptedUsername = AES.encrypt(createRequest.getUsername(), AES.getKey());
-            String encryptedPassword = AES.encrypt(createRequest.getPassword(), AES.getKey());
-            String encryptedNotes = AES.encrypt(createRequest.getNotes(), AES.getKey());
+            SecretKey key = AES.getKey();
+            String encryptedName = AES.encrypt(source.getName(), key);
+            String encryptedUsername = AES.encrypt(source.getUsername(), key);
+            String encryptedPassword = AES.encrypt(source.getPassword(), key);
+            String encryptedNotes = AES.encrypt(source.getNotes(), key);
             return new Password(encryptedName, encryptedUsername, encryptedPassword, encryptedNotes);
         } catch (Exception e) {
             throw new EncryptionException(ApplicationErrorMessage.UNKNOWN_ENCRYPTION_ERROR);
         }
     }
 
-    public Password mapToModel(UpdatePasswordUseCase.PasswordUpdateRequest updateRequest, Password password) {
+    public Password mapToModel(UpdatePasswordUseCase.PasswordUpdateRequest source, Password target) {
         try {
-            String encryptedName = AES.encrypt(updateRequest.getName(), AES.getKey());
-            String encryptedUsername = AES.encrypt(updateRequest.getUsername(), AES.getKey());
-            String encryptedPassword = AES.encrypt(updateRequest.getPassword(), AES.getKey());
-            String encryptedNotes = AES.encrypt(updateRequest.getNotes(), AES.getKey());
+            SecretKey key = AES.getKey();
+            String encryptedName = AES.encrypt(source.getName(), key);
+            String encryptedUsername = AES.encrypt(source.getUsername(), key);
+            String encryptedPassword = AES.encrypt(source.getPassword(), key);
+            String encryptedNotes = AES.encrypt(source.getNotes(), key);
 
-            password.setName(encryptedName);
-            password.setUsername(encryptedUsername);
-            password.setPassword(encryptedPassword);
-            password.setNotes(encryptedNotes);
-            return password;
+            target.setName(encryptedName);
+            target.setUsername(encryptedUsername);
+            target.setPassword(encryptedPassword);
+            target.setNotes(encryptedNotes);
+            return target;
         } catch (Exception e) {
             throw new EncryptionException(ApplicationErrorMessage.UNKNOWN_ENCRYPTION_ERROR);
         }
     }
 
 
-    public PasswordResponse mapToResponse(Password password) {
+    public PasswordResponse mapToResponse(Password source) {
         try {
-            String decryptedName = AES.decrypt(password.getName(), AES.getKey());
-            String decryptedUsername = AES.decrypt(password.getUsername(), AES.getKey());
-            String decryptedPassword = AES.decrypt(password.getPassword(), AES.getKey());
-            String decryptedNotes = AES.decrypt(password.getNotes(), AES.getKey());
-            return new PasswordResponse(password.getId(), password.getCreatedAt(), password.getUpdatedAt(), decryptedName, decryptedUsername, decryptedPassword, decryptedNotes);
+            SecretKey key = AES.getKey();
+            String decryptedName = AES.decrypt(source.getName(), key);
+            String decryptedUsername = AES.decrypt(source.getUsername(), key);
+            String decryptedPassword = AES.decrypt(source.getPassword(), key);
+            String decryptedNotes = AES.decrypt(source.getNotes(), key);
+            return new PasswordResponse(source.getId(), source.getCreatedAt(), source.getUpdatedAt(), decryptedName, decryptedUsername, decryptedPassword, decryptedNotes);
         } catch (Exception e) {
             throw new DecryptionException(ApplicationErrorMessage.UNKNOWN_DECRYPTION_ERROR);
         }
+    }
+
+
+    public List<PasswordResponse> mapToResponse(List<Password> source) {
+        if (Objects.isNull(source)) return null;
+        return source.stream().map(this::mapToResponse).toList();
     }
 }
 

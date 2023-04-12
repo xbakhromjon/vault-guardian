@@ -27,7 +27,7 @@ class CreateUserServiceTest {
 
         User result = createUserService.create(createRequest);
 
-        assertThat(result.getId()).isEqualTo(1L);
+        assertThat(result.getId()).isEqualTo(new User.UserId(1L));
         assertThat(result.getEmail()).isEqualTo(createRequest.getEmail());
         assertThat(result.getMasterPassword()).isEqualTo(createRequest.getMasterPassword());
         assertThat(result.getHint()).isEqualTo(createRequest.getHint());
@@ -36,7 +36,7 @@ class CreateUserServiceTest {
     void mockSaveUserMethod(User user) {
         given(saveUserPort.save(eq(user)))
                 .willAnswer(invocationOnMock -> {
-                            user.setId(1L);
+                            user.setId(new User.UserId(1L));
                             return user;
                         }
                 );

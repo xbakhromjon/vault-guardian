@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
+import uz.bakhromjon.application.password.domain.Password;
 
 public interface UpdatePasswordUseCase {
     PasswordResponse update(PasswordUpdateRequest updateRequest);
@@ -17,7 +18,7 @@ public interface UpdatePasswordUseCase {
     @EqualsAndHashCode(callSuper = false)
     class PasswordUpdateRequest {
         @NotNull
-        private Long id;
+        private Password.PasswordId id;
         private String name;
         private String username;
         @NotBlank

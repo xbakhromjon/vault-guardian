@@ -9,4 +9,6 @@ public final class PersistenceErrorDataKey {
     public static final String USER_EMAIL = "user_email";
     public static final String ACCESS_TOKEN = "access_token";
     public static final String PASSWORD_ID = "password_id";
+    public static final String PASSPORT_ID = "passport_id";
+    public static final String USER_ID = "user_id";
 }

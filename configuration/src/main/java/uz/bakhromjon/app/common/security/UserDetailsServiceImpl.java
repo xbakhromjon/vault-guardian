@@ -46,9 +46,9 @@ public class UserDetailsServiceImpl implements UserDetailsService, SessionUserSe
     }
 
     @Override
-    public long getSessionId() {
+    public User.UserId getSessionId() {
         SessionUser session = getSession();
-        return Objects.isNull(session) ? 3 : session.getId();
+        return Objects.isNull(session) ? new User.UserId(-1L) : session.getId();
     }
 }
 

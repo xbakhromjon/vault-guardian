@@ -27,12 +27,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         jsr250Enabled = true,
         prePostEnabled = true)
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfiguration {
     public static final String[] WHITE_LIST = {
             "/auth/**",
             "/swagger-ui/**",
-            "/v3/api-docs/**",
-            "/**"
+            "/v3/api-docs/**"
     };
 
 

@@ -8,13 +8,19 @@ spring:
     password: 123
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
+        search:
+          default:
+            index_schema_management_strategy: create-or-validate
+          backend:
+            directory:
+              root: src\main\resources\search\index
       dialect: org.hibernate.dialect.PostgreSQL81Dialect
-    show-sql: true
 
 server:
   servlet:
     context-path: /api
+
 

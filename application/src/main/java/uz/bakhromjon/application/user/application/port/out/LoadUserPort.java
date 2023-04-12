@@ -6,4 +6,6 @@ public interface LoadUserPort {
     User loadByEmail(String email);
 
     boolean existsByEmail(String email);
+
+    boolean existsById(User.UserId userId);
 }

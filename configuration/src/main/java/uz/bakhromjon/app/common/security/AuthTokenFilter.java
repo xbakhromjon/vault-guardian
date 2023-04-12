@@ -38,7 +38,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             return;
         }
         accessToken = accessToken.substring(7);
-
         AccessToken accessTokenObj;
         try {
             accessTokenObj = loadAccessTokenPort.loadByToken(accessToken);
@@ -64,7 +63,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return Arrays.stream(SecurityConfig.WHITE_LIST)
+        return Arrays.stream(SecurityConfiguration.WHITE_LIST)
                 .anyMatch(e -> new AntPathMatcher().match(e, request.getServletPath()));
     }
 

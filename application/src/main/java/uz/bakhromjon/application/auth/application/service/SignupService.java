@@ -10,6 +10,7 @@ import uz.bakhromjon.application.token.application.port.in.response.AccessTokenR
 import uz.bakhromjon.application.user.application.port.out.LoadUserPort;
 import uz.bakhromjon.application.user.application.port.out.SaveUserPort;
 import uz.bakhromjon.application.user.domain.User;
+import uz.bakhromjon.common.ERole;
 import uz.bakhromjon.common.ErrorData;
 import uz.bakhromjon.common.UseCase;
 
@@ -28,6 +29,7 @@ public class SignupService implements SignUpUseCase {
             throw new EmailAlreadyTakenException(ApplicationErrorMessage.EMAIL_ALREADY_TAKEN, new ErrorData(ApplicationErrorDataKey.EMAIL, signUpRequest.getEmail()));
         }
         User user = authMapper.mapToModel(signUpRequest);
+        user.setRole(ERole.USER);
 
         try {
             user.setMasterPassword(AES.encrypt(signUpRequest.getMasterPassword(), AES.getKey()));

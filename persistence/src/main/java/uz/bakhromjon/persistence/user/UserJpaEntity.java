@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import uz.bakhromjon.application.passport.domain.Passport;
+import uz.bakhromjon.common.ERole;
+import uz.bakhromjon.persistence.passport.PassportJpaEntity;
 import uz.bakhromjon.persistence.password.PasswordJpaEntity;
 
 import java.util.List;
@@ -30,6 +33,10 @@ public class UserJpaEntity {
     @Column
     private String hint;
 
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private ERole role;
+
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
-    private List<PasswordJpaEntity> passwords;
+    private List<PassportJpaEntity> passports;
 }

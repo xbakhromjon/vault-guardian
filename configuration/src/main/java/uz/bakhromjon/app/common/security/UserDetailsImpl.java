@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import uz.bakhromjon.application.common.SessionUser;
 import uz.bakhromjon.application.user.domain.User;
+import uz.bakhromjon.common.ERole;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,13 +18,14 @@ import java.util.Collection;
 @Getter
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails, SessionUser {
-    private Long id;
+    private User.UserId id;
     private String email;
     private String masterPassword;
     private String hint;
+    private ERole role;
 
     public static UserDetailsImpl build(User user) {
-        return new UserDetailsImpl(user.getId(), user. getEmail(), user.getMasterPassword(), user.getHint());
+        return new UserDetailsImpl(user.getId(), user.getEmail(), user.getMasterPassword(), user.getHint(), user.getRole());
     }
 
     @Override

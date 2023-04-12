@@ -1,7 +1,9 @@
 package uz.bakhromjon.application.common;
 
+import uz.bakhromjon.application.user.domain.User;
+
 public interface SessionUserService {
     SessionUser getSession();
 
-    long getSessionId();
+    User.UserId getSessionId();
 }

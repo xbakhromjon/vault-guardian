@@ -38,4 +38,9 @@ public class UserPersistenceAdapter implements SaveUserPort, LoadUserPort {
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
+
+    @Override
+    public boolean existsById(User.UserId userId) {
+        return userRepository.existsById(userId.getValue());
+    }
 }

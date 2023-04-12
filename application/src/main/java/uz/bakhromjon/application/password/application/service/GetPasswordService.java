@@ -3,7 +3,9 @@ package uz.bakhromjon.application.password.application.service;
 import lombok.RequiredArgsConstructor;
 import uz.bakhromjon.application.common.PageableResponse;
 import uz.bakhromjon.application.common.SessionUserService;
+import uz.bakhromjon.application.passport.domain.Passport;
 import uz.bakhromjon.application.password.application.port.in.GetPasswordQuery;
+import uz.bakhromjon.application.password.application.port.in.criteria.PasswordSearchCriteria;
 import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
 import uz.bakhromjon.application.password.application.port.out.LoadPasswordPort;
 import uz.bakhromjon.application.password.domain.Password;
@@ -12,18 +14,19 @@ import uz.bakhromjon.common.UseCase;
 @UseCase
 @RequiredArgsConstructor
 public class GetPasswordService implements GetPasswordQuery {
-    private final LoadPasswordPort getPasswordPort;
+    private final LoadPasswordPort loadPasswordPort;
     private final PasswordPresenterMapper passwordPresenterMapper;
     private final SessionUserService sessionUserService;
 
     @Override
-    public PasswordResponse getById(long passwordId) {
-        Password password = getPasswordPort.load(passwordId, sessionUserService.getSessionId());
+    public PasswordResponse getById(Password.PasswordId id) {
+        Password password = loadPasswordPort.load(id, sessionUserService.getSessionId());
         return passwordPresenterMapper.mapToResponse(password);
     }
 
     @Override
-    public PageableResponse<PasswordResponse> search(String search) {
-        return null;
+    public PageableResponse<PasswordResponse> search(PasswordSearchCriteria criteria) {
+        PageableResponse<Password> result = loadPasswordPort.search(criteria);
+        return PageableResponse.build(result, passwordPresenterMapper.mapToResponse(result.getContent()));
     }
 }

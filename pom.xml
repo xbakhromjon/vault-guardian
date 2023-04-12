@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uz.bakhromjon</groupId>
-    <artifactId>vault-guardian</artifactId>
+    <artifactId>vault-guardian-backend</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
