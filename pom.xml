@@ -11,9 +11,10 @@
     <modules>
         <module>application</module>
         <module>persistence</module>
-        <module>presentation</module>
+        <module>presentation-rest</module>
         <module>configuration</module>
         <module>common</module>
+        <module>presentation-graphql</module>
     </modules>
 
     <properties>

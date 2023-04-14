@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>uz.bakhromjon</groupId>
+        <artifactId>vault-guardian-backend</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>presentation-graphql</artifactId>
+
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <application-version>1.0.0</application-version>
+        <common-version>1.0.0</common-version>
+        <spring-boot-version>3.0.2</spring-boot-version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>uz.bakhromjon</groupId>
+            <artifactId>application</artifactId>
+            <version>${application-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uz.bakhromjon</groupId>
+            <artifactId>common</artifactId>
+            <version>${common-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

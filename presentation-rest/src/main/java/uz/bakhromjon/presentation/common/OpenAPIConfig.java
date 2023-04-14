@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common.openAPI;
+package uz.bakhromjon.presentation.common;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.WebJarsResourceResolver;
-import uz.bakhromjon.presentation.common.PathNames;
 
 
 @Configuration

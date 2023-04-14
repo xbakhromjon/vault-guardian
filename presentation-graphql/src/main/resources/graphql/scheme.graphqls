@@ -1,0 +1,29 @@
+type Query {
+    getById(id: ID!): PasswordResponse
+}
+
+type Mutation {
+    signup(email: String!, masterPassword: String!, hint: String!): AccessTokenResponse
+}
+
+
+type AccessTokenResponse {
+    token: String
+    expireAt: String
+}
+
+input SignupRequest {
+    email: String
+    masterPassword: String
+    hint: String
+}
+
+type PasswordResponse{
+    id: ID!
+    createdAt: String
+    updatedAt: String
+    name: String
+    username: String
+    password: String
+    notes: String
+}

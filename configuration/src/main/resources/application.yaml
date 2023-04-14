@@ -1,4 +1,7 @@
 spring:
+  graphql:
+    graphiql:
+      enabled: true
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -16,7 +19,7 @@ spring:
             index_schema_management_strategy: create-or-validate
           backend:
             directory:
-              root: src\main\resources\search\index
+              root: search\index
       dialect: org.hibernate.dialect.PostgreSQL81Dialect
 
 server:

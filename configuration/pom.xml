@@ -59,7 +59,7 @@
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
-            <artifactId>presentation</artifactId>
+            <artifactId>presentation-graphql</artifactId>
             <version>${presenter-version}</version>
         </dependency>
         <dependency>
