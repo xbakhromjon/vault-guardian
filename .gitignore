@@ -161,3 +161,7 @@ fabric.properties
 /src/main/resources/search/index/PassportJpaEntity/segments_9
 /src/main/resources/search/index/PassportJpaEntity/write.lock
 /src/main/resources/search/index/PasswordJpaEntity/write.lock
+/search/index/PassportJpaEntity/segments_1
+/search/index/PasswordJpaEntity/segments_1
+/search/index/PassportJpaEntity/write.lock
+/search/index/PasswordJpaEntity/write.lock
