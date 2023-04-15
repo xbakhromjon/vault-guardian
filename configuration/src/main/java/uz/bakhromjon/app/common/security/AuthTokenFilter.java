@@ -22,6 +22,7 @@ import uz.bakhromjon.application.token.domain.AccessToken;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Enumeration;
 
 
 public class AuthTokenFilter extends OncePerRequestFilter {
@@ -31,10 +32,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        // TODO: 3/3/2023 SOMEONE (P1): Clean Up here
         String accessToken = request.getHeader("Authorization");
+
         if (accessToken == null || !accessToken.startsWith("Bearer")) {
-            sendError(new ErrorResponse("", request.getRequestURI(), ConfigurationErrorMessage.ACCESS_TOKEN_REQUIRED_THIS_RESOURCE, null), response);
+            filterChain.doFilter(request, response);
             return;
         }
         accessToken = accessToken.substring(7);
@@ -58,13 +59,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         filterChain.doFilter(request, response);
-    }
-
-
-    @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return Arrays.stream(SecurityConfiguration.WHITE_LIST)
-                .anyMatch(e -> new AntPathMatcher().match(e, request.getServletPath()));
     }
 
     private void sendError(ErrorResponse errorResponse, HttpServletResponse httpServletResponse) throws IOException {

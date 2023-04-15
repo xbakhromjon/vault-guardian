@@ -3,9 +3,10 @@ type Query {
 }
 
 type Mutation {
-    signup(email: String!, masterPassword: String!, hint: String!): AccessTokenResponse
+    signup(request: SignupRequest!): AccessTokenResponse
+    signIn(request: SignInRequest!): AccessTokenResponse
+    createPassword(request: PasswordCreateRequest!): PasswordResponse
 }
-
 
 type AccessTokenResponse {
     token: String
@@ -13,9 +14,14 @@ type AccessTokenResponse {
 }
 
 input SignupRequest {
-    email: String
-    masterPassword: String
-    hint: String
+    email: String!
+    masterPassword: String!
+    hint: String!
+}
+
+input SignInRequest {
+    email: String!
+    masterPassword: String!
 }
 
 type PasswordResponse{
@@ -25,5 +31,12 @@ type PasswordResponse{
     name: String
     username: String
     password: String
+    notes: String
+}
+
+input PasswordCreateRequest {
+    name: String
+    username: String!
+    password: String!
     notes: String
 }

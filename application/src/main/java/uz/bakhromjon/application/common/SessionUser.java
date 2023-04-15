@@ -13,5 +13,4 @@ public interface SessionUser {
     String getHint();
 
     ERole getRole();
-
 }

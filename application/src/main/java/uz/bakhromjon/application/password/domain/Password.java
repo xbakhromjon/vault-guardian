@@ -1,9 +1,6 @@
 package uz.bakhromjon.application.password.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import uz.bakhromjon.application.user.domain.User;
 
 import java.time.LocalDateTime;
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class Password {
+
     private PasswordId id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -32,8 +30,8 @@ public class Password {
         this.notes = notes;
     }
 
-    @Getter
-    @AllArgsConstructor
+
+    @Value
     public static class PasswordId {
         private Long value;
     }
