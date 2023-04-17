@@ -10,6 +10,7 @@ import uz.bakhromjon.common.ERole;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author : Bakhromjon Khasanboyev
@@ -30,7 +31,7 @@ public class UserDetailsImpl implements UserDetails, SessionUser {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        return List.of((GrantedAuthority) () -> role.name());
     }
 
     @Override

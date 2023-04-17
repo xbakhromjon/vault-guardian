@@ -2,15 +2,17 @@ package uz.bakhromjon.application.passport.application.port.in;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.cglib.core.Local;
 import uz.bakhromjon.application.passport.application.port.in.response.PassportResponse;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface CreatePassportUseCase {
     PassportResponse create(PassportCreateRequest createRequest);
 
+    @Setter
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
@@ -24,9 +26,9 @@ public interface CreatePassportUseCase {
         private String sex;
         private String nationality;
         private String issuingAuthority;
-        private String dateOfBirth;
-        private String issuedDate;
-        private String expirationDate;
+        private LocalDate dateOfBirth;
+        private LocalDate issuedDate;
+        private LocalDate expirationDate;
         private String notes;
     }
 }

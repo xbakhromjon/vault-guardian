@@ -24,6 +24,7 @@ public interface PassportPersistenceMapper {
     @Mapping(target = "updatedAt", source = "auditor.updatedAt")
     @Mapping(target = "deleted", source = "auditor.deleted")
     @Mapping(target = "id.value", source = "id")
+    @Mapping(target = "ownerId.value", source = "owner.id")
     Passport mapToModel(PassportJpaEntity source);
 
     List<Passport> mapToModel(Collection<PassportJpaEntity> source);

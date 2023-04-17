@@ -31,8 +31,13 @@ public class Password {
     }
 
 
-    @Value
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class PasswordId {
         private Long value;
     }
+
+
 }

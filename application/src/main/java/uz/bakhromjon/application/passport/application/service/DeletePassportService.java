@@ -14,7 +14,7 @@ public class DeletePassportService implements DeletePassportUseCase {
     private final DeletePassportPort deletePassportPort;
 
     @Override
-    public void delete(Passport.PassportId id) {
-        deletePassportPort.deleteById(id);
+    public boolean delete(Passport.PassportId id) {
+        return deletePassportPort.deleteById(id);
     }
 }

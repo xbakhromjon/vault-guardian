@@ -5,13 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.jdbc.Sql;
-import uz.bakhromjon.application.application.domain.Application;
 import uz.bakhromjon.application.user.domain.User;
-import uz.bakhromjon.persistence.application.ApplicationPersistenceAdapter;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.STREAM;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @Import({UserPersistenceAdapter.class})
@@ -32,7 +28,7 @@ class UserPersistenceAdapterTest {
     }
 
     @Test
-    @Sql(scripts = "/script/user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "/data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     void loadByEmail() {
         String email = "xbakhromjon1@gmail.com";
         User actual = adapterUnderTest.loadByEmail(email);

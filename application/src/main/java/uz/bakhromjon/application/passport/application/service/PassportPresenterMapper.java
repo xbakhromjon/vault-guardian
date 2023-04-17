@@ -26,14 +26,11 @@ public abstract class PassportPresenterMapper {
             String encryptedSex = AES.encrypt(createRequest.getSex(), key);
             String encryptedNationality = AES.encrypt(createRequest.getNationality(), key);
             String encryptedIssuingAuthority = AES.encrypt(createRequest.getIssuingAuthority(), key);
-            String encryptedDateOfBirth = AES.encrypt(createRequest.getDateOfBirth(), key);
-            String encryptedIssuedDate = AES.encrypt(createRequest.getIssuedDate(), key);
-            String encryptedExpirationDate = AES.encrypt(createRequest.getExpirationDate(), key);
             String encryptedNotes = AES.encrypt(createRequest.getNotes(), key);
 
             return new Passport(encryptedName, encryptedCountry, encryptedNumber,
                     encryptedSex, encryptedNationality, encryptedIssuingAuthority,
-                    encryptedDateOfBirth, encryptedIssuedDate, encryptedExpirationDate,
+                    createRequest.getDateOfBirth(), createRequest.getIssuedDate(), createRequest.getExpirationDate(),
                     encryptedNotes);
         } catch (Exception e) {
             throw new EncryptionException(ApplicationErrorMessage.UNKNOWN_ENCRYPTION_ERROR);
@@ -49,9 +46,6 @@ public abstract class PassportPresenterMapper {
             String encryptedSex = AES.encrypt(updateRequest.getSex(), key);
             String encryptedNationality = AES.encrypt(updateRequest.getNationality(), key);
             String encryptedIssuingAuthority = AES.encrypt(updateRequest.getIssuingAuthority(), key);
-            String encryptedDateOfBirth = AES.encrypt(updateRequest.getDateOfBirth(), key);
-            String encryptedIssuedDate = AES.encrypt(updateRequest.getIssuedDate(), key);
-            String encryptedExpirationDate = AES.encrypt(updateRequest.getExpirationDate(), key);
             String encryptedNotes = AES.encrypt(updateRequest.getNotes(), key);
 
             passport.setName(encryptedName);
@@ -60,9 +54,9 @@ public abstract class PassportPresenterMapper {
             passport.setSex(encryptedSex);
             passport.setNationality(encryptedNationality);
             passport.setIssuingAuthority(encryptedIssuingAuthority);
-            passport.setDateOfBirth(encryptedDateOfBirth);
-            passport.setIssuedDate(encryptedIssuedDate);
-            passport.setExpirationDate(encryptedExpirationDate);
+            passport.setDateOfBirth(updateRequest.getDateOfBirth());
+            passport.setIssuedDate(updateRequest.getIssuedDate());
+            passport.setExpirationDate(updateRequest.getExpirationDate());
             passport.setNotes(encryptedNotes);
             return passport;
         } catch (Exception e) {
@@ -80,16 +74,14 @@ public abstract class PassportPresenterMapper {
             String decryptedSex = AES.decrypt(passport.getSex(), key);
             String decryptedNationality = AES.decrypt(passport.getNationality(), key);
             String decryptedIssuingAuthority = AES.decrypt(passport.getIssuingAuthority(), key);
-            String decryptedDateOfBirth = AES.decrypt(passport.getDateOfBirth(), key);
-            String decryptedIssuedDate = AES.decrypt(passport.getIssuedDate(), key);
-            String decryptedExpirationDate = AES.decrypt(passport.getExpirationDate(), key);
             String decryptedNotes = AES.decrypt(passport.getNotes(), key);
 
 
             return new PassportResponse(passport.getId(), passport.getCreatedAt(), passport.getUpdatedAt(),
                     decryptedName, decryptedCountry, decryptedNumber, decryptedSex,
-                    decryptedNationality, decryptedIssuingAuthority, decryptedDateOfBirth, decryptedIssuedDate,
-                    decryptedExpirationDate, decryptedNotes
+                    decryptedNationality, decryptedIssuingAuthority,
+                    passport.getDateOfBirth(), passport.getIssuedDate(),
+                    passport.getExpirationDate(), decryptedNotes
             );
         } catch (Exception e) {
             throw new DecryptionException(ApplicationErrorMessage.UNKNOWN_DECRYPTION_ERROR);

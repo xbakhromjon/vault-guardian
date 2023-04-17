@@ -14,6 +14,7 @@ import uz.bakhromjon.persistence.common.AuditorEntityListener;
 import uz.bakhromjon.persistence.common.BaseEntity;
 import uz.bakhromjon.persistence.user.UserJpaEntity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -44,9 +45,9 @@ public class PassportJpaEntity implements BaseEntity {
     private String number;
     private String sex;
     private String nationality;
-    private String issuingAuthority;
-    private String dateOfBirth;
-    private String issuedDate;
+    private LocalDate issuingAuthority;
+    private LocalDate dateOfBirth;
+    private LocalDate issuedDate;
     private String expirationDate;
 
     @FullTextField

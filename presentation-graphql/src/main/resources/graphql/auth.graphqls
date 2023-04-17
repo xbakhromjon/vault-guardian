@@ -1,0 +1,15 @@
+type AccessTokenResponse {
+    token: String
+    expireAt: String
+}
+
+input SignupRequest {
+    email: String!
+    masterPassword: String!
+    hint: String!
+}
+
+input SignInRequest {
+    email: String!
+    masterPassword: String!
+}

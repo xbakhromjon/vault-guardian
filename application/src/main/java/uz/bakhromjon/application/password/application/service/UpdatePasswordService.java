@@ -19,7 +19,7 @@ public class UpdatePasswordService implements UpdatePasswordUseCase {
 
     @Override
     public PasswordResponse update(PasswordUpdateRequest updateRequest) {
-        Password password = loadPasswordPort.load(updateRequest.getId(), sessionUserService.getSessionId());
+        Password password = loadPasswordPort.loadForUpdate(updateRequest.getId(), sessionUserService.getSessionId());
         passwordPresenterMapper.mapToModel(updateRequest, password);
         password = savePasswordPort.save(password);
         return passwordPresenterMapper.mapToResponse(password);

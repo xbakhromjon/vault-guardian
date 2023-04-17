@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import uz.bakhromjon.application.common.PageableResponse;
 import uz.bakhromjon.application.password.application.port.in.CreatePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.DeletePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.GetPasswordQuery;
@@ -53,9 +54,9 @@ public class PasswordController {
 
     @CheckRole(role = ERole.USER)
     @GetMapping("/search")
-    public GenericResponse<?> search(@RequestParam(required = false, name = "search") String search,
-                                     @RequestParam(required = false, name = "page", defaultValue = Constant.PAGE) @Min(value = 0, message = ValidationMessage.PAGE_MIN_VALUE_VIOLATION) Integer page,
-                                     @RequestParam(required = false, name = "size", defaultValue = Constant.SIZE) @Min(value = 1, message = ValidationMessage.SIZE_MIN_VALUE_VIOLATION) Integer size) {
+    public GenericResponse<PageableResponse<PasswordResponse>> search(@RequestParam(required = false, name = "search") String search,
+                                                    @RequestParam(required = false, name = "page", defaultValue = Constant.PAGE) @Min(value = 0, message = ValidationMessage.PAGE_MIN_VALUE_VIOLATION) Integer page,
+                                                    @RequestParam(required = false, name = "size", defaultValue = Constant.SIZE) @Min(value = 1, message = ValidationMessage.SIZE_MIN_VALUE_VIOLATION) Integer size) {
         return GenericResponse.ok(getPasswordQuery.search(new PasswordSearchCriteria(search, page, size)));
     }
 }

@@ -12,7 +12,7 @@ public class DeletePasswordService implements DeletePasswordUseCase {
     private final DeletePasswordPort deletePasswordPort;
 
     @Override
-    public void delete(Password.PasswordId id) {
-        deletePasswordPort.deleteById(id);
+    public boolean delete(Password.PasswordId id) {
+        return deletePasswordPort.deleteById(id);
     }
 }

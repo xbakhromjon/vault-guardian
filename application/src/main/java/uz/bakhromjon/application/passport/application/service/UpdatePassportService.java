@@ -19,7 +19,7 @@ public class UpdatePassportService implements UpdatePassportUseCase {
 
     @Override
     public PassportResponse update(PassportUpdateRequest updateRequest) {
-        Passport passport = loadPassportPort.load(updateRequest.getId(), sessionUserService.getSessionId());
+        Passport passport = loadPassportPort.loadForUpdate(updateRequest.getId(), sessionUserService.getSessionId());
         passportPresenterMapper.mapToModel(updateRequest, passport);
         passport = savePassportPort.save(passport);
         return passportPresenterMapper.mapToResponse(passport);

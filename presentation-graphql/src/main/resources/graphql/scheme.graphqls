@@ -1,42 +1,21 @@
 type Query {
-    getById(id: ID!): PasswordResponse
+    getOnePasswordById(id: ID!): PasswordResponse
+    getOnePassportById(id: ID!): PassportResponse
+    searchPassword(criteria: PasswordSearchCriteria!): PasswordPageableResponse
+    searchPassport(criteria: PassportSearchCriteria!): PassportPageableResponse
 }
 
 type Mutation {
     signup(request: SignupRequest!): AccessTokenResponse
     signIn(request: SignInRequest!): AccessTokenResponse
     createPassword(request: PasswordCreateRequest!): PasswordResponse
+    updatePassword(request: PasswordUpdateRequest!): PasswordResponse
+    deletePassword(id: ID!): Boolean
+    createPassport(request: PassportCreateRequest!): PassportResponse
+    updatePassport(request: PassportUpdateRequest!): PassportResponse
+    deletePassport(id: ID!): Boolean
 }
 
-type AccessTokenResponse {
-    token: String
-    expireAt: String
-}
 
-input SignupRequest {
-    email: String!
-    masterPassword: String!
-    hint: String!
-}
 
-input SignInRequest {
-    email: String!
-    masterPassword: String!
-}
 
-type PasswordResponse{
-    id: ID!
-    createdAt: String
-    updatedAt: String
-    name: String
-    username: String
-    password: String
-    notes: String
-}
-
-input PasswordCreateRequest {
-    name: String
-    username: String!
-    password: String!
-    notes: String
-}

@@ -18,6 +18,8 @@
         <application-version>1.0.0</application-version>
         <common-version>1.0.0</common-version>
         <spring-boot-version>3.0.2</spring-boot-version>
+        <graphql-java-extended-scalars-version>20.2</graphql-java-extended-scalars-version>
+        <graphql-datetime-spring-boot-starter-version>6.0.0</graphql-datetime-spring-boot-starter-version>
     </properties>
     <dependencies>
         <dependency>
@@ -39,6 +41,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-graphql</artifactId>
             <version>${spring-boot-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>${graphql-java-extended-scalars-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tailrocks.graphql</groupId>
+            <artifactId>graphql-datetime-spring-boot-starter</artifactId>
+            <version>${graphql-datetime-spring-boot-starter-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

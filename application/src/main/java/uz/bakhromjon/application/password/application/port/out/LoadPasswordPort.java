@@ -7,6 +7,7 @@ import uz.bakhromjon.application.user.domain.User;
 
 public interface LoadPasswordPort {
     Password load(Password.PasswordId id, User.UserId requestedUserId);
+    Password loadForUpdate(Password.PasswordId id, User.UserId requestedUserId);
 
     PageableResponse<Password> search(PasswordSearchCriteria criteria);
 }

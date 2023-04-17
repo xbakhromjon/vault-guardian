@@ -52,8 +52,21 @@ public class PasswordPersistenceAdapter implements SavePasswordPort, LoadPasswor
     }
 
     @Override
-    public void deleteById(Password.PasswordId id) {
+    public Password loadForUpdate(Password.PasswordId id, User.UserId requestedUserId) {
+        Optional<PasswordJpaEntity> passwordOptional = passwordRepository.findByIdAndOwnerIdForUpdate(id.getValue(), requestedUserId.getValue());
+        PasswordJpaEntity entity = passwordOptional.orElseThrow(() -> {
+            throw new DataNotFoundException(PersistenceErrorMessage.PASSWORD_NOT_FOUND, new ErrorData(PersistenceErrorDataKey.PASSWORD_ID, id.getValue()));
+        });
+        return PASSWORD_PERSISTENCE_MAPPER.mapToModel(entity);
+    }
+
+    @Override
+    public boolean deleteById(Password.PasswordId id) {
+        if (!passwordRepository.existsById(id.getValue())) {
+            return false;
+        }
         passwordRepository.deleteById(id.getValue());
+        return true;
     }
 
 

@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 import uz.bakhromjon.application.user.domain.User;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -24,15 +26,15 @@ public class Passport {
     private String sex;
     private String nationality;
     private String issuingAuthority;
-    private String dateOfBirth;
-    private String issuedDate;
-    private String expirationDate;
+    private LocalDate dateOfBirth;
+    private LocalDate issuedDate;
+    private LocalDate expirationDate;
     private String notes;
 
     private User.UserId ownerId;
 
 
-    public Passport(String name, String country, String number, String sex, String nationality, String issuingAuthority, String dateOfBirth, String issuedDate, String expirationDate, String notes) {
+    public Passport(String name, String country, String number, String sex, String nationality, String issuingAuthority, LocalDate dateOfBirth, LocalDate issuedDate, LocalDate expirationDate, String notes) {
         this.name = name;
         this.country = country;
         this.number = number;
@@ -45,8 +47,10 @@ public class Passport {
         this.notes = notes;
     }
 
+    @Setter
     @Getter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class PassportId {
         private Long value;
     }

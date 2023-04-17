@@ -21,8 +21,11 @@ public class User {
         this.hint = hint;
     }
 
+
+    @Setter
     @Getter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class UserId {
         private Long value;
     }

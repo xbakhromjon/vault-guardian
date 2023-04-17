@@ -22,6 +22,7 @@ public interface PasswordPersistenceMapper {
     @Mapping(target = "updatedAt", source = "auditor.updatedAt")
     @Mapping(target = "deleted", source = "auditor.deleted")
     @Mapping(target = "id.value", source = "id")
+    @Mapping(target = "ownerId.value", source = "owner.id")
     Password mapToModel(PasswordJpaEntity source);
 
 

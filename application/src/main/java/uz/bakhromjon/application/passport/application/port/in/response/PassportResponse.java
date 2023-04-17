@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.bakhromjon.application.passport.domain.Passport;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -23,8 +24,8 @@ public class PassportResponse {
     private String sex;
     private String nationality;
     private String issuingAuthority;
-    private String datOfBirth;
-    private String issuedDate;
-    private String expirationDate;
+    private LocalDate datOfBirth;
+    private LocalDate issuedDate;
+    private LocalDate expirationDate;
     private String notes;
 }

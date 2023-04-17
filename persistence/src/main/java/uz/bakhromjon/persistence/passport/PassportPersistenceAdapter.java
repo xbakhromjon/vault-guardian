@@ -52,8 +52,21 @@ public class PassportPersistenceAdapter implements SavePassportPort, LoadPasspor
     }
 
     @Override
-    public void deleteById(Passport.PassportId id) {
+    public Passport loadForUpdate(Passport.PassportId passportId, User.UserId requestedUserId) {
+        Optional<PassportJpaEntity> passportOptional = passportRepository.findByIdAndOwnerIdForUpdate(passportId.getValue(), requestedUserId.getValue());
+        PassportJpaEntity entity = passportOptional.orElseThrow(() -> {
+            throw new DataNotFoundException(PersistenceErrorMessage.PASSPORT_NOT_FOUND, new ErrorData(PersistenceErrorDataKey.PASSPORT_ID, passportId));
+        });
+        return PASSPORT_PERSISTENCE_MAPPER.mapToModel(entity);
+    }
+
+    @Override
+    public boolean deleteById(Passport.PassportId id) {
+        if (!passportRepository.existsById(id.getValue())) {
+            return false;
+        }
         passportRepository.deleteById(id.getValue());
+        return true;
     }
 
     @Override
@@ -67,8 +80,7 @@ public class PassportPersistenceAdapter implements SavePassportPort, LoadPasspor
 
         int offset = criteria.getPage() * criteria.getSize();
         SearchPredicate predicate = bool.toPredicate();
-        SearchResult<PassportJpaEntity> result = searchSession.search(scope).
-                where(predicate).fetch(offset, criteria.getSize());
+        SearchResult<PassportJpaEntity> result = searchSession.search(scope).where(predicate).fetch(offset, criteria.getSize());
 
         List<PassportJpaEntity> hits = result.hits();
 

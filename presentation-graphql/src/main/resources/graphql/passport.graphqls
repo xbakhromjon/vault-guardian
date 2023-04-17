@@ -1,0 +1,63 @@
+type PassportResponse{
+    id: PassportIdResponse!
+    createdAt: String
+    updatedAt: String
+    name: String
+    country: String
+    number: String
+    sex: String
+    nationality: String
+    issuingAuthority: String
+    datOfBirth: LocalDate
+    issuedDate: LocalDate
+    expirationDate: LocalDate
+    notes: String
+}
+
+input PassportCreateRequest {
+    name: String
+    country: String
+    number: String!
+    sex: String
+    nationality: String
+    issuingAuthority: String
+    dateOfBirth: LocalDate
+    issuedDate: LocalDate
+    expirationDate: LocalDate
+    notes: String
+}
+
+type PassportIdResponse {
+    value: ID!
+}
+
+input PassportId {
+    value: ID!
+}
+
+input PassportUpdateRequest {
+    id: PassportId!
+    name: String
+    country: String
+    number: String!
+    sex: String
+    nationality: String
+    issuingAuthority: String
+    dateOfBirth: LocalDate
+    issuedDate: LocalDate
+    expirationDate: LocalDate
+    notes: String
+}
+
+input PassportSearchCriteria {
+    search: String
+    page: Int
+    size: Int
+}
+
+type PassportPageableResponse {
+    content: [PassportResponse]
+    totalElements: Long
+    totalPages: Int
+    size: Int
+}
