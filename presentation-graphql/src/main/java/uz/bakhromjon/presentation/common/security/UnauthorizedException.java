@@ -1,9 +1,7 @@
-package uz.bakhromjon.app.common.security;
+package uz.bakhromjon.presentation.common.security;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-
-import java.util.HashMap;
 
 /**
  * @author : Ahrorjon Isroilov

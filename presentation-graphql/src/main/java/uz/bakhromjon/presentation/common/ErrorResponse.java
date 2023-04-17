@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common.exception;
+package uz.bakhromjon.presentation.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

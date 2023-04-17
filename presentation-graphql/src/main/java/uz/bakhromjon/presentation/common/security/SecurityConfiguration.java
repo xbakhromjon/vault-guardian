@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common.security;
+package uz.bakhromjon.presentation.common.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

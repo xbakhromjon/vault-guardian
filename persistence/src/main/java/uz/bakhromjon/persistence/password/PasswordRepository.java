@@ -18,9 +18,4 @@ public interface PasswordRepository extends JpaRepository<PasswordJpaEntity, Lon
     @EntityGraph(attributePaths = "owner")
     @Query("select p from PasswordJpaEntity p where p.id = :passwordId and p.owner.id = :ownerId")
     Optional<PasswordJpaEntity> findByIdAndOwnerIdForUpdate(@Param(value = "passwordId") long passwordId, @Param(value = "ownerId") long ownerId);
-
-
-    @Modifying
-    @Query("update PasswordJpaEntity p set p.auditor.isDeleted = true where p.id = :id")
-    void delete(@Param("id") Long id);
 }

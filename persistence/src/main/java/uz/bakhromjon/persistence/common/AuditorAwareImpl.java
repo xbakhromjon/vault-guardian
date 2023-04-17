@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common;
+package uz.bakhromjon.persistence.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.AuditorAware;

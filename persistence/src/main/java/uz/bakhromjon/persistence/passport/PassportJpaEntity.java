@@ -9,13 +9,11 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
-import uz.bakhromjon.persistence.common.Auditor;
-import uz.bakhromjon.persistence.common.AuditorEntityListener;
+import uz.bakhromjon.persistence.common.Auditable;
 import uz.bakhromjon.persistence.common.BaseEntity;
 import uz.bakhromjon.persistence.user.UserJpaEntity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Getter
@@ -26,15 +24,11 @@ import java.time.LocalDateTime;
 @Table(name = "passport")
 @SQLDelete(sql = "UPDATE passport SET is_deleted = true where id = ?")
 @Where(clause = "not is_deleted")
-@EntityListeners(AuditorEntityListener.class)
 @Indexed
-public class PassportJpaEntity implements BaseEntity {
+public class PassportJpaEntity extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Embedded
-    private Auditor auditor;
 
     @FullTextField
     private String name;
@@ -45,10 +39,10 @@ public class PassportJpaEntity implements BaseEntity {
     private String number;
     private String sex;
     private String nationality;
-    private LocalDate issuingAuthority;
+    private String issuingAuthority;
     private LocalDate dateOfBirth;
     private LocalDate issuedDate;
-    private String expirationDate;
+    private LocalDate expirationDate;
 
     @FullTextField
     private String notes;

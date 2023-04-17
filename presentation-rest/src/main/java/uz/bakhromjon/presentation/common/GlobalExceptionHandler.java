@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common.exception;
+package uz.bakhromjon.presentation.common;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import uz.bakhromjon.common.ClientException;
 import uz.bakhromjon.common.UserException;
-import uz.bakhromjon.persistence.common.DataNotFoundException;
-import uz.bakhromjon.presentation.common.GenericResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

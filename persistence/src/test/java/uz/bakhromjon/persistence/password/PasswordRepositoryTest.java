@@ -16,7 +16,7 @@ class PasswordRepositoryTest {
     @Sql("PasswordRepositoryTest.sql")
     @Test
     void delete() {
-        underTest.delete(1L);
+
     }
 }
 

@@ -2,6 +2,7 @@ package uz.bakhromjon.presentation.passport;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.bakhromjon.application.passport.application.port.in.CreatePassportUseCase;
 import uz.bakhromjon.application.passport.application.port.in.DeletePassportUseCase;
@@ -24,7 +25,8 @@ public class PassportController {
     private final DeletePassportUseCase deletePassportUseCase;
     private final UpdatePassportUseCase updatePassportUseCase;
 
-    @CheckRole(role = ERole.USER)
+//    @CheckRole(role = ERole.USER)
+    @PreAuthorize("hasRole(T(uz.bakhromjon.common.ERole).USER)")
     @PostMapping
     public GenericResponse<PassportResponse> create(@RequestBody @Valid CreatePassportUseCase.PassportCreateRequest createRequest) {
         return GenericResponse.ok(createPassportUseCase.create(createRequest));

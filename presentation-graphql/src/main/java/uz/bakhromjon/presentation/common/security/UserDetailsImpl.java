@@ -1,14 +1,14 @@
-package uz.bakhromjon.app.common.security;
+package uz.bakhromjon.presentation.common.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import uz.bakhromjon.application.common.SessionUser;
 import uz.bakhromjon.application.user.domain.User;
 import uz.bakhromjon.common.ERole;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class UserDetailsImpl implements UserDetails, SessionUser {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of((GrantedAuthority) () -> role.name());
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override

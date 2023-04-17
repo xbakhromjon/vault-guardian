@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(basePackages = {"uz.bakhromjon"})
 @EnableJpaRepositories(basePackages = {"uz.bakhromjon"})
 public class Application {
-    // TODO: 4/9/2023 createdAt, updatedAt config
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
     }

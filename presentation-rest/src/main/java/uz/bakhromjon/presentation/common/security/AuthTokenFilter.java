@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common.security;
+package uz.bakhromjon.presentation.common.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
@@ -12,17 +12,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
-import uz.bakhromjon.app.common.constant.ConfigurationErrorMessage;
-import uz.bakhromjon.app.common.exception.ErrorResponse;
 import uz.bakhromjon.application.token.application.port.out.LoadAccessTokenPort;
-import uz.bakhromjon.application.user.domain.User;
-import uz.bakhromjon.persistence.common.DataNotFoundException;
-import uz.bakhromjon.presentation.common.GenericResponse;
 import uz.bakhromjon.application.token.domain.AccessToken;
+import uz.bakhromjon.application.user.domain.User;
+import uz.bakhromjon.presentation.common.ErrorMessage;
+import uz.bakhromjon.presentation.common.ErrorResponse;
+import uz.bakhromjon.presentation.common.GenericResponse;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Enumeration;
 
 
 public class AuthTokenFilter extends OncePerRequestFilter {
@@ -35,19 +33,20 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         String accessToken = request.getHeader("Authorization");
 
         if (accessToken == null || !accessToken.startsWith("Bearer")) {
-            filterChain.doFilter(request, response);
+            UnauthorizedException exception = new UnauthorizedException(ErrorMessage.ACCESS_TOKEN_REQUIRED_THIS_RESOURCE, null);
+            sendError(new ErrorResponse("", request.getRequestURI(), ErrorMessage.ACCESS_TOKEN_REQUIRED_THIS_RESOURCE, null), response);
             return;
         }
         accessToken = accessToken.substring(7);
         AccessToken accessTokenObj;
         try {
             accessTokenObj = loadAccessTokenPort.loadByToken(accessToken);
-        } catch (DataNotFoundException e) {
-            sendError(new ErrorResponse("", request.getRequestURI(), ConfigurationErrorMessage.WRONG_ACCESS_TOKEN, null), response);
+        } catch (Exception e) {
+            sendError(new ErrorResponse("", request.getRequestURI(), ErrorMessage.WRONG_ACCESS_TOKEN, null), response);
             return;
         }
         if (accessTokenObj.isExpired()) {
-            sendError(new ErrorResponse("", request.getRequestURI(), ConfigurationErrorMessage.ACCESS_TOKEN_EXPIRED, null), response);
+            sendError(new ErrorResponse("", request.getRequestURI(), ErrorMessage.ACCESS_TOKEN_EXPIRED, null), response);
             return;
         }
         User user = accessTokenObj.getUser();
@@ -69,4 +68,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
     }
 
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        return Arrays.stream(SecurityConfiguration.WHITE_LIST)
+                .anyMatch(e -> new AntPathMatcher().match(e, request.getServletPath()));
+    }
 }

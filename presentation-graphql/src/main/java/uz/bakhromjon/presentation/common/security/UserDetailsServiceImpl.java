@@ -1,18 +1,15 @@
-package uz.bakhromjon.app.common.security;
+package uz.bakhromjon.presentation.common.security;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import uz.bakhromjon.application.common.SessionUser;
 import uz.bakhromjon.application.common.SessionUserService;
 import uz.bakhromjon.application.user.application.port.out.LoadUserPort;
-import uz.bakhromjon.application.user.application.port.out.SaveUserPort;
 import uz.bakhromjon.application.user.domain.User;
 
 import java.util.Objects;

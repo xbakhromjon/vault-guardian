@@ -8,10 +8,8 @@ import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
-import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
-import uz.bakhromjon.persistence.common.Auditor;
-import uz.bakhromjon.persistence.common.AuditorEntityListener;
+import uz.bakhromjon.persistence.common.Auditable;
 import uz.bakhromjon.persistence.common.BaseEntity;
 import uz.bakhromjon.persistence.user.UserJpaEntity;
 
@@ -24,15 +22,11 @@ import uz.bakhromjon.persistence.user.UserJpaEntity;
 @Table(name = "password")
 @SQLDelete(sql = "UPDATE password SET is_deleted = true where id = ?")
 @Where(clause = "not is_deleted")
-@EntityListeners(AuditorEntityListener.class)
 @Indexed
-public class PasswordJpaEntity implements BaseEntity {
+public class PasswordJpaEntity extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Embedded
-    private Auditor auditor;
 
     @FullTextField
     private String name;

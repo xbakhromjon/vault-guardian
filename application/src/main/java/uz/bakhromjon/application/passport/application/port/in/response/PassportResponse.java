@@ -24,7 +24,7 @@ public class PassportResponse {
     private String sex;
     private String nationality;
     private String issuingAuthority;
-    private LocalDate datOfBirth;
+    private LocalDate dateOfBirth;
     private LocalDate issuedDate;
     private LocalDate expirationDate;
     private String notes;

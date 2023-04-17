@@ -1,10 +1,7 @@
 package uz.bakhromjon.persistence.common;
 
-import jakarta.persistence.Embeddable;
-
-import java.time.LocalDateTime;
-
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,14 +12,16 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Embeddable
+@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Auditor {
+public abstract class Auditable {
     @CreatedBy
     private Long createdBy;
     @CreatedDate

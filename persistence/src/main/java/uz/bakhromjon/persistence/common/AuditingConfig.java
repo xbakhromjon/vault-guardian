@@ -1,4 +1,4 @@
-package uz.bakhromjon.app.common;
+package uz.bakhromjon.persistence.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
