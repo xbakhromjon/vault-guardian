@@ -65,18 +65,16 @@ public class GlobalExceptionHandler {
         );
     }
 
-    @ExceptionHandler(Exception.class)
-    public GenericResponse<ErrorResponse> defaultException(Exception e, ServletWebRequest webRequest) {
-        return new GenericResponse<>(
-                new ErrorResponse(
-                        e.getClass().getSimpleName(),
-                        webRequest.getRequest().getRequestURI(),
-                        e.getLocalizedMessage(),
-                        e.getMessage()
-                ),
-                HttpStatus.INTERNAL_SERVER_ERROR
-        );
-    }
-
-
+//    @ExceptionHandler(Exception.class)
+//    public GenericResponse<ErrorResponse> defaultException(Exception e, ServletWebRequest webRequest) {
+//        return new GenericResponse<>(
+//                new ErrorResponse(
+//                        e.getClass().getSimpleName(),
+//                        webRequest.getRequest().getRequestURI(),
+//                        e.getLocalizedMessage(),
+//                        e.getMessage()
+//                ),
+//                HttpStatus.INTERNAL_SERVER_ERROR
+//        );
+//    }
 }

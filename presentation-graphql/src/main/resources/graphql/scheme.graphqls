@@ -7,7 +7,7 @@ type Query {
 
 type Mutation {
     signup(request: SignupRequest!): AccessTokenResponse
-    signIn(request: SignInRequest!): AccessTokenResponse
+    signIn(request: SignInRequest!): AccessTokenResponsePayload
     createPassword(request: PasswordCreateRequest!): PasswordResponse
     updatePassword(request: PasswordUpdateRequest!): PasswordResponse
     deletePassword(id: ID!): Boolean

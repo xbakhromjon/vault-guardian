@@ -39,11 +39,11 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         try {
             accessTokenObj = loadAccessTokenPort.loadByToken(accessToken);
         } catch (Exception e) {
-            sendError(new ErrorResponse("", request.getRequestURI(), ErrorMessage.WRONG_ACCESS_TOKEN, null), response);
+            sendError(new ErrorResponse("", ErrorMessage.WRONG_ACCESS_TOKEN, null), response);
             return;
         }
         if (accessTokenObj.isExpired()) {
-            sendError(new ErrorResponse("", request.getRequestURI(), ErrorMessage.ACCESS_TOKEN_EXPIRED, null), response);
+            sendError(new ErrorResponse("", ErrorMessage.ACCESS_TOKEN_EXPIRED, null), response);
             return;
         }
         User user = accessTokenObj.getUser();

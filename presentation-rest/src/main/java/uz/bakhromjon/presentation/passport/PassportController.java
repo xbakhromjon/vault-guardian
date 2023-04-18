@@ -25,8 +25,7 @@ public class PassportController {
     private final DeletePassportUseCase deletePassportUseCase;
     private final UpdatePassportUseCase updatePassportUseCase;
 
-//    @CheckRole(role = ERole.USER)
-    @PreAuthorize("hasRole(T(uz.bakhromjon.common.ERole).USER)")
+    @CheckRole(role = ERole.USER)
     @PostMapping
     public GenericResponse<PassportResponse> create(@RequestBody @Valid CreatePassportUseCase.PassportCreateRequest createRequest) {
         return GenericResponse.ok(createPassportUseCase.create(createRequest));

@@ -33,11 +33,9 @@ public class PassportController {
         return getPassportQuery.getById(new Passport.PassportId(id));
     }
 
-    @PreAuthorize("hasAuthority(T(uz.bakhromjon.common.ERole).USER)")
+    @PreAuthorize("isAuthenticated()")
     @MutationMapping(name = "createPassport")
     public PassportResponse create(@Argument CreatePassportUseCase.PassportCreateRequest request) {
-        UserDetailsImpl session = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(session.getAuthorities());
         return createPassportUseCase.create(request);
     }
 

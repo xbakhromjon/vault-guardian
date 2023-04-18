@@ -1,3 +1,5 @@
+union AccessTokenResponsePayload = AccessTokenResponse | ErrorResponse
+
 type AccessTokenResponse {
     token: String
     expireAt: String

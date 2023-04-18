@@ -1,3 +1,10 @@
 scalar Long
 scalar LocalDateTime
 scalar LocalDate
+
+type ErrorResponse {
+    error: String
+    path: String
+    message: String
+    code: Int
+}

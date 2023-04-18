@@ -29,9 +29,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     public static final String[] WHITE_LIST = {
-            "/auth/**",
-            "/swagger-ui/**",
-            "/v3/api-docs/**",
             "/graphiql/**",
             "/graphql/**"
     };

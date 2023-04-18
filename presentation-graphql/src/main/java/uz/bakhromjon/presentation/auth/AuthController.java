@@ -10,6 +10,7 @@ import uz.bakhromjon.application.auth.application.port.in.SignUpUseCase;
 import uz.bakhromjon.application.auth.application.service.BadCredentialsException;
 import uz.bakhromjon.application.auth.application.service.EmailAlreadyTakenException;
 import uz.bakhromjon.application.token.application.port.in.response.AccessTokenResponse;
+import uz.bakhromjon.presentation.common.ErrorResponse;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,7 +24,13 @@ public class AuthController {
     }
 
     @MutationMapping
-    public AccessTokenResponse signIn(@Argument @Valid SignInUseCase.SignInRequest request) throws BadCredentialsException {
-        return signInUseCase.signIn(request);
+    public Object signIn(@Argument @Valid SignInUseCase.SignInRequest request) {
+        try {
+            return signInUseCase.signIn(request);
+        } catch (BadCredentialsException e) {
+            return new ErrorResponse(e.getMessage(), e.getLocalizedMessage(), e.getCode());
+        } catch (Exception e) {
+            return new ErrorResponse(e.getMessage(), e.getLocalizedMessage(), null);
+        }
     }
 }
