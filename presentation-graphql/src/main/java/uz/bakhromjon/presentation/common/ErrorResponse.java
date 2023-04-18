@@ -16,4 +16,9 @@ public class ErrorResponse {
     private String message;
 
     private Integer code;
+
+    public ErrorResponse(String error, String message) {
+        this.error = error;
+        this.message = message;
+    }
 }

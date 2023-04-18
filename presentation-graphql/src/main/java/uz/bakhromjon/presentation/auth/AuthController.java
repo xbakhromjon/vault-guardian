@@ -19,8 +19,14 @@ public class AuthController {
     private final SignInUseCase signInUseCase;
 
     @MutationMapping
-    public AccessTokenResponse signup(@Argument @Valid SignUpUseCase.SignupRequest request) throws EmailAlreadyTakenException {
-        return signUpUseCase.signup(request);
+    public Object signup(@Argument @Valid SignUpUseCase.SignupRequest request) throws EmailAlreadyTakenException {
+        try {
+            return signUpUseCase.signup(request);
+        } catch (EmailAlreadyTakenException e) {
+            return new ErrorResponse(e.getMessage(), e.getLocalizedMessage(), e.getCode());
+        } catch (Exception e) {
+            return new ErrorResponse(e.getMessage(), e.getLocalizedMessage());
+        }
     }
 
     @MutationMapping
@@ -30,7 +36,7 @@ public class AuthController {
         } catch (BadCredentialsException e) {
             return new ErrorResponse(e.getMessage(), e.getLocalizedMessage(), e.getCode());
         } catch (Exception e) {
-            return new ErrorResponse(e.getMessage(), e.getLocalizedMessage(), null);
+            return new ErrorResponse(e.getMessage(), e.getLocalizedMessage());
         }
     }
 }
