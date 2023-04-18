@@ -4,11 +4,10 @@ import lombok.RequiredArgsConstructor;
 import uz.bakhromjon.application.common.PageableResponse;
 import uz.bakhromjon.application.common.SessionUserService;
 import uz.bakhromjon.application.passport.application.port.in.GetPassportQuery;
-import uz.bakhromjon.application.passport.application.port.in.criteria.PassportSearchCriteria;
-import uz.bakhromjon.application.passport.application.port.in.response.PassportResponse;
+import uz.bakhromjon.application.passport.application.port.in.PassportSearchCriteria;
+import uz.bakhromjon.application.passport.application.port.in.PassportResponse;
 import uz.bakhromjon.application.passport.application.port.out.LoadPassportPort;
 import uz.bakhromjon.application.passport.domain.Passport;
-import uz.bakhromjon.application.password.domain.Password;
 import uz.bakhromjon.common.UseCase;
 
 @UseCase

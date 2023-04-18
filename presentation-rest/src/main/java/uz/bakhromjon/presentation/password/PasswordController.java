@@ -9,8 +9,8 @@ import uz.bakhromjon.application.password.application.port.in.CreatePasswordUseC
 import uz.bakhromjon.application.password.application.port.in.DeletePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.GetPasswordQuery;
 import uz.bakhromjon.application.password.application.port.in.UpdatePasswordUseCase;
-import uz.bakhromjon.application.password.application.port.in.criteria.PasswordSearchCriteria;
-import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
+import uz.bakhromjon.application.password.application.port.in.PasswordSearchCriteria;
+import uz.bakhromjon.application.password.application.port.in.PasswordResponse;
 import uz.bakhromjon.application.password.domain.Password;
 import uz.bakhromjon.common.ERole;
 import uz.bakhromjon.presentation.common.CheckRole;

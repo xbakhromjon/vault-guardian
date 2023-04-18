@@ -2,19 +2,16 @@ package uz.bakhromjon.presentation.passport;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.bakhromjon.application.passport.application.port.in.CreatePassportUseCase;
 import uz.bakhromjon.application.passport.application.port.in.DeletePassportUseCase;
 import uz.bakhromjon.application.passport.application.port.in.GetPassportQuery;
 import uz.bakhromjon.application.passport.application.port.in.UpdatePassportUseCase;
-import uz.bakhromjon.application.passport.application.port.in.response.PassportResponse;
+import uz.bakhromjon.application.passport.application.port.in.PassportResponse;
 import uz.bakhromjon.application.passport.domain.Passport;
 import uz.bakhromjon.common.ERole;
 import uz.bakhromjon.presentation.common.CheckRole;
 import uz.bakhromjon.presentation.common.GenericResponse;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/passport")

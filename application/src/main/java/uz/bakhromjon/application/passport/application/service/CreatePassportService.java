@@ -1,10 +1,9 @@
 package uz.bakhromjon.application.passport.application.service;
 
 import lombok.RequiredArgsConstructor;
-import uz.bakhromjon.application.common.SessionUser;
 import uz.bakhromjon.application.common.SessionUserService;
 import uz.bakhromjon.application.passport.application.port.in.CreatePassportUseCase;
-import uz.bakhromjon.application.passport.application.port.in.response.PassportResponse;
+import uz.bakhromjon.application.passport.application.port.in.PassportResponse;
 import uz.bakhromjon.application.passport.application.port.out.SavePassportPort;
 import uz.bakhromjon.application.passport.domain.Passport;
 import uz.bakhromjon.common.UseCase;

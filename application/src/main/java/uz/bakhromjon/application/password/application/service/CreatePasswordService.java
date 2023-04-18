@@ -3,7 +3,7 @@ package uz.bakhromjon.application.password.application.service;
 import lombok.RequiredArgsConstructor;
 import uz.bakhromjon.application.common.SessionUserService;
 import uz.bakhromjon.application.password.application.port.in.CreatePasswordUseCase;
-import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
+import uz.bakhromjon.application.password.application.port.in.PasswordResponse;
 import uz.bakhromjon.application.password.application.port.out.SavePasswordPort;
 import uz.bakhromjon.application.password.domain.Password;
 import uz.bakhromjon.common.UseCase;

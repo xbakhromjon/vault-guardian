@@ -1,16 +1,11 @@
 package uz.bakhromjon.application.passport.application.service;
 
 import org.mapstruct.*;
-import uz.bakhromjon.application.common.AES;
-import uz.bakhromjon.application.common.ApplicationErrorMessage;
-import uz.bakhromjon.application.common.DecryptionException;
-import uz.bakhromjon.application.common.EncryptionException;
 import uz.bakhromjon.application.passport.application.port.in.CreatePassportUseCase;
 import uz.bakhromjon.application.passport.application.port.in.UpdatePassportUseCase;
-import uz.bakhromjon.application.passport.application.port.in.response.PassportResponse;
+import uz.bakhromjon.application.passport.application.port.in.PassportResponse;
 import uz.bakhromjon.application.passport.domain.Passport;
 
-import javax.crypto.SecretKey;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;

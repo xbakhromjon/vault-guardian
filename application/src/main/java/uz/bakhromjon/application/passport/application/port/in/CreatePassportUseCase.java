@@ -3,11 +3,8 @@ package uz.bakhromjon.application.passport.application.port.in;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.cglib.core.Local;
-import uz.bakhromjon.application.passport.application.port.in.response.PassportResponse;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public interface CreatePassportUseCase {
     PassportResponse create(PassportCreateRequest createRequest);

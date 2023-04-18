@@ -6,7 +6,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import uz.bakhromjon.application.password.application.port.in.CreatePasswordUseCase;
 import uz.bakhromjon.application.password.application.port.in.UpdatePasswordUseCase;
-import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
+import uz.bakhromjon.application.password.application.port.in.PasswordResponse;
 import uz.bakhromjon.application.password.domain.Password;
 
 import java.util.List;

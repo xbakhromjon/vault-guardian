@@ -1,4 +1,4 @@
-package uz.bakhromjon.application.passport.application.port.in.response;
+package uz.bakhromjon.application.passport.application.port.in;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

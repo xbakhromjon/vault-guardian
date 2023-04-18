@@ -1,4 +1,4 @@
-package uz.bakhromjon.application.password.application.port.in.criteria;
+package uz.bakhromjon.application.password.application.port.in;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

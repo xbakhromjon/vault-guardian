@@ -3,7 +3,6 @@ package uz.bakhromjon.application.password.application.port.in;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import uz.bakhromjon.application.password.application.port.in.response.PasswordResponse;
 import uz.bakhromjon.application.password.domain.Password;
 
 public interface UpdatePasswordUseCase {

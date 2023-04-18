@@ -7,7 +7,7 @@ import org.hibernate.search.engine.search.query.SearchResult;
 import org.hibernate.search.mapper.orm.scope.SearchScope;
 import org.hibernate.search.mapper.orm.session.SearchSession;
 import uz.bakhromjon.application.common.PageableResponse;
-import uz.bakhromjon.application.password.application.port.in.criteria.PasswordSearchCriteria;
+import uz.bakhromjon.application.password.application.port.in.PasswordSearchCriteria;
 import uz.bakhromjon.application.password.application.port.out.DeletePasswordPort;
 import uz.bakhromjon.application.password.application.port.out.LoadPasswordPort;
 import uz.bakhromjon.application.password.application.port.out.SavePasswordPort;
