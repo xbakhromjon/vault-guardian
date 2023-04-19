@@ -10,11 +10,12 @@
     <packaging>pom</packaging>
     <modules>
         <module>application</module>
-        <module>persistence</module>
+        <module>persistence-sql</module>
         <module>presentation-rest</module>
         <module>configuration</module>
         <module>common</module>
         <module>presentation-graphql</module>
+        <module>persistence-nosql</module>
     </modules>
 
     <properties>

@@ -64,7 +64,7 @@
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
-            <artifactId>persistence</artifactId>
+            <artifactId>persistence-sql</artifactId>
             <version>${persistence-version}</version>
         </dependency>
         <dependency>
