@@ -3,12 +3,15 @@ package uz.bakhromjon.application.user.domain;
 import lombok.*;
 import uz.bakhromjon.common.ERole;
 
+import java.beans.Transient;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id", "email", "masterPassword", "hint"})
 public class User {
+
     private UserId id;
     private String email;
     private String masterPassword;

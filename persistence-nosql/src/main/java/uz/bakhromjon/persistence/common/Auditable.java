@@ -20,6 +20,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Document
 public abstract class Auditable {
+    private String sequenceName;
+    private Long id;
     @CreatedBy
     private Long createdBy;
     @CreatedDate

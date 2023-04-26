@@ -16,8 +16,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document(collection = "users")
 public class UserDocument {
+    public String sequenceName = "users_sequence";
     @Id
     private Long id;
 

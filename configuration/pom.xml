@@ -59,12 +59,12 @@
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
-            <artifactId>presentation-graphql</artifactId>
+            <artifactId>presentation-rest</artifactId>
             <version>${presenter-version}</version>
         </dependency>
         <dependency>
             <groupId>uz.bakhromjon</groupId>
-            <artifactId>persistence-sql</artifactId>
+            <artifactId>persistence-nosql</artifactId>
             <version>${persistence-version}</version>
         </dependency>
         <dependency>

@@ -7,13 +7,13 @@ import uz.bakhromjon.application.common.SessionUserService;
 
 import java.util.Optional;
 
-@Component
-public class AuditorAwareImpl implements AuditorAware<Long> {
-    @Autowired
-    private SessionUserService sessionUserService;
-
-    @Override
-    public Optional<Long> getCurrentAuditor() {
-        return Optional.ofNullable(sessionUserService.getSessionId().getValue());
-    }
-}
+//@Component
+//public class AuditorAwareImpl implements AuditorAware<Long> {
+//    @Autowired
+//    private SessionUserService sessionUserService;
+//
+//    @Override
+//    public Optional<Long> getCurrentAuditor() {
+//        return Optional.ofNullable(sessionUserService.getSessionId().getValue());
+//    }
+//}
