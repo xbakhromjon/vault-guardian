@@ -16,14 +16,13 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document(collection = "passport")
 public class PassportDocument extends Auditable {
+    public static final String SEQUENCE_NAME = "passport_sequence";
     @Id
     private Long id;
-
     private String name;
     private String country;
-
     private String number;
     private String sex;
     private String nationality;
@@ -31,8 +30,12 @@ public class PassportDocument extends Auditable {
     private LocalDate dateOfBirth;
     private LocalDate issuedDate;
     private LocalDate expirationDate;
-
     private String notes;
-
     private UserDocument owner;
+
+
+    @Override
+    public String getSequenceName() {
+        return SEQUENCE_NAME;
+    }
 }

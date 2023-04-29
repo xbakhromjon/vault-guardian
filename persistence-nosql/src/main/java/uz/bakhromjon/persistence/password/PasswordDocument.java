@@ -14,8 +14,9 @@ import uz.bakhromjon.persistence.user.UserDocument;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document(collection = "password")
 public class PasswordDocument extends Auditable {
+    public static final String SEQUENCE_NAME = "password_sequence";
     @Id
     private Long id;
 
@@ -28,4 +29,9 @@ public class PasswordDocument extends Auditable {
     private String notes;
 
     private UserDocument owner;
+
+    @Override
+    public String getSequenceName() {
+        return SEQUENCE_NAME;
+    }
 }

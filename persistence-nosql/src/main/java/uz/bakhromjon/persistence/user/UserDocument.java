@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import uz.bakhromjon.common.ERole;
+import uz.bakhromjon.persistence.common.Auditable;
 import uz.bakhromjon.persistence.passport.PassportDocument;
 
 import java.util.List;
@@ -17,8 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "users")
-public class UserDocument {
-    public String sequenceName = "users_sequence";
+public class UserDocument extends Auditable {
+    public static final String SEQUENCE_NAME = "users_sequence";
     @Id
     private Long id;
 
@@ -30,5 +31,8 @@ public class UserDocument {
 
     private ERole role;
 
-    private List<PassportDocument> passports;
+    @Override
+    public String getSequenceName() {
+        return SEQUENCE_NAME;
+    }
 }

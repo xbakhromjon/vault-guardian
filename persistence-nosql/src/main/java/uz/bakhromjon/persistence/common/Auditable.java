@@ -20,10 +20,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Document
 public abstract class Auditable {
-    private String sequenceName;
-    private Long id;
     @CreatedBy
     private Long createdBy;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
@@ -32,4 +31,10 @@ public abstract class Auditable {
     @LastModifiedDate
     private LocalDateTime updatedAt;
     private boolean isDeleted;
+
+    public abstract String getSequenceName();
+
+    public abstract Long getId();
+
+    public abstract void setId(Long id);
 }
