@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vault_guardian_db
+    username: postgres
+    password: 123
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        search:
+          default:
+            index_schema_management_strategy: create-or-validate
+          backend:
+            directory:
+              root: search\index
+      dialect: org.hibernate.dialect.PostgreSQL81Dialect
+

@@ -16,6 +16,7 @@
         <module>common</module>
         <module>presentation-graphql</module>
         <module>persistence-nosql</module>
+        <module>presentation-soap</module>
     </modules>
 
     <properties>

@@ -1,0 +1,28 @@
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: mongodb://localhost:27017/vault_guardian_db
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        search:
+          default:
+            index_schema_management_strategy: create-or-validate
+          backend:
+            directory:
+              root: search\index
+      dialect: org.hibernate.dialect.PostgreSQL81Dialect
+
+server:
+  servlet:
+    context-path: /api
+  error:
+    include-exception: true
+
